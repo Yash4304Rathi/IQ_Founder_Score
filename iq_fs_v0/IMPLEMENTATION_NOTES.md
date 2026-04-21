@@ -1,7 +1,7 @@
-# Founder-Scorer-IQ Implementation Notes
+# founder-scorer-iq implementation notes (iq_fs_v0)
 
 ## Purpose
-This document explains how the current `Founder-Scorer-IQ` prototype was built, why the product was shaped this way, which providers and endpoints were tried, what finally worked, and what the likely operating cost looks like if this prototype is run in production-like usage.
+This document explains how the current `iq_fs_v0` prototype was built, why the product was shaped this way, which providers and endpoints were tried, what finally worked, and what the likely operating cost looks like if this prototype is run in production-like usage.
 
 ## Why This Product Was Built This Way
 The prototype was intentionally narrowed to a LinkedIn-first workflow instead of a broad internet-scraping system.

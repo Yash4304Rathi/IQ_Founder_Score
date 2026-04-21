@@ -1,4 +1,4 @@
-# Founder-Scorer-IQ — LinkedIn prototype (IQFSV1)
+# founder-scorer-iq — linkedin prototype (iq_fs_v0)
 
 Internal India Quotient prototype. Given a founder name (and optionally a
 company name, pitch deck PDF, or exact LinkedIn URL), this tool:
@@ -12,13 +12,13 @@ company name, pitch deck PDF, or exact LinkedIn URL), this tool:
 4. Shows which profile was used, lets you edit the URL if wrong, and keeps
    a local history of runs.
 
-This is deliberately a narrow v1 — LinkedIn only. Company scraping and
+this is deliberately a narrow v0 — linkedin only. company scraping and
 other sources are explicitly deferred.
 
 ## Setup
 
 ```bash
-cd IQFSV1
+cd iq_fs_v0
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
