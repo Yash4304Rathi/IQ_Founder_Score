@@ -564,69 +564,46 @@ def _run_pipeline(
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown(
-        '<div class="iq-section-label" style="margin-top:0">Run History</div>',
-        unsafe_allow_html=True,
-    )
+    st.caption("RUN HISTORY")
+    st.divider()
     history = load_history()
     if not history:
         st.caption("No runs yet.")
     else:
         for entry in reversed(history[-20:]):
-            grade   = entry.get("grade", "")
-            result  = entry.get("result") or {}
-            failed  = not result
-            score   = entry.get("overall_linkedin_fit", "—")
-            name    = entry.get("founder_name", "Unknown")
+            grade  = entry.get("grade", "")
+            result = entry.get("result") or {}
+            failed = not result
+            score  = entry.get("overall_linkedin_fit", "—")
+            name   = entry.get("founder_name", "Unknown")
             company = entry.get("company_name", "")
-            ts      = entry.get("timestamp", "")[:10]
-            url     = entry.get("linkedin_url", "")
-            grade_cls = GRADE_COLORS.get(grade, "iq-pill-gray")
+            ts     = entry.get("timestamp", "")[:10]
+            url    = entry.get("linkedin_url", "")
 
-            score_display = (
-                f'<span style="color:#991B1B;font-weight:700">Failed</span>'
-                if failed
-                else f'<span style="font-size:1.1rem;font-weight:700;letter-spacing:-0.02em">{score}</span>'
-                     f'<span style="font-size:0.7rem;color:{TEXT_MUTED}">/100</span>'
-            )
-            grade_badge = (
-                "" if failed
-                else f'<span class="iq-pill {grade_cls}" style="font-size:0.58rem">{grade}</span>'
-            )
-            company_line = f'<div style="font-size:0.72rem;color:{TEXT_MUTED};margin-top:0.1rem">{company}</div>' if company else ""
-            url_line = (
-                f'<div style="font-size:0.72rem;margin-top:0.25rem">'
-                f'<a href="{url}" target="_blank" style="color:{ACCENT};text-decoration:none">LinkedIn ↗</a>'
-                f'</div>'
-                if url else ""
-            )
+            with st.container(border=True):
+                name_col, score_col = st.columns([3, 1])
+                with name_col:
+                    st.markdown(f"**{name}**")
+                    if company:
+                        st.caption(company)
+                with score_col:
+                    if failed:
+                        st.caption("failed")
+                    else:
+                        st.markdown(f"**{score}**/100")
 
-            st.markdown(
-                f"""
-                <div style="
-                    background:{BG};
-                    border:1px solid {BORDER};
-                    border-radius:4px;
-                    padding:0.7rem 0.8rem;
-                    margin-bottom:0.5rem;
-                ">
-                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem">
-                        <div style="font-size:0.85rem;font-weight:600;color:{TEXT};line-height:1.2">{name}</div>
-                        <div style="text-align:right;flex-shrink:0">{score_display}</div>
-                    </div>
-                    {company_line}
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.4rem">
-                        {grade_badge}
-                        <span style="font-size:0.68rem;color:{TEXT_LIGHT}">{ts}</span>
-                    </div>
-                    {url_line}
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-            if st.button("Delete", key=f"del_{entry['id']}"):
-                delete_entry(entry["id"])
-                st.rerun()
+                if not failed and grade:
+                    st.caption(f"Grade: {grade}  ·  {ts}")
+                else:
+                    st.caption(ts)
+
+                if url:
+                    st.markdown(f"[LinkedIn ↗]({url})")
+
+                if st.button("Delete", key=f"del_{entry['id']}"):
+                    delete_entry(entry["id"])
+                    st.rerun()
+            st.write("")
 
 
 # ── Header ────────────────────────────────────────────────────────────────────
@@ -648,10 +625,7 @@ st.caption(
 st.divider()
 
 # ── Input form ────────────────────────────────────────────────────────────────
-st.markdown(
-    f'<div class="iq-section-label">New Analysis</div>',
-    unsafe_allow_html=True,
-)
+st.caption("NEW ANALYSIS")
 with st.form("founder_form"):
     col1, col2 = st.columns(2, gap="large")
     with col1:
