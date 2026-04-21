@@ -46,6 +46,24 @@ html, body, [class*="css"] {{
 }}
 .stApp {{ background-color: {BG}; }}
 
+/* ── Top header bar (force white) ── */
+header[data-testid="stHeader"] {{
+    background-color: {BG} !important;
+    border-bottom: 1px solid {BORDER} !important;
+}}
+header[data-testid="stHeader"] * {{
+    color: {TEXT} !important;
+}}
+header[data-testid="stHeader"] button {{
+    color: {TEXT} !important;
+    background: transparent !important;
+    border-color: {BORDER} !important;
+}}
+/* Deploy button text */
+.stDeployButton span, .stDeployButton p {{
+    color: {TEXT} !important;
+}}
+
 /* ── Sidebar ── */
 [data-testid="stSidebar"] {{
     background-color: {SURFACE};
@@ -150,11 +168,22 @@ hr {{
     background-color: {BG} !important;
     color: {TEXT} !important;
     box-shadow: none !important;
+    caret-color: {ACCENT} !important;
 }}
-.stTextInput > div > div > input:focus {{
+.stTextInput > div > div > input:focus,
+.stTextInput > div > div > input:active {{
     border-color: {ACCENT} !important;
+    background-color: {BG} !important;
+    color: {TEXT} !important;
     box-shadow: 0 0 0 3px {ACCENT_LIGHT} !important;
     outline: none !important;
+}}
+/* Kill the dark navy focus overlay Streamlit injects */
+.stTextInput > div[data-focused="true"] > div,
+.stTextInput > div > div:focus-within {{
+    background-color: {BG} !important;
+    border-color: {ACCENT} !important;
+    box-shadow: 0 0 0 3px {ACCENT_LIGHT} !important;
 }}
 .stTextInput label, .stFileUploader label {{
     font-size: 0.68rem !important;
@@ -163,10 +192,35 @@ hr {{
     text-transform: uppercase !important;
     color: {TEXT_MUTED} !important;
 }}
+/* ── File uploader — force light ── */
 [data-testid="stFileUploader"] {{
+    background-color: {BG} !important;
+    border-radius: 3px !important;
+}}
+[data-testid="stFileUploaderDropzone"] {{
     background-color: {SURFACE} !important;
     border: 1px dashed {BORDER} !important;
     border-radius: 3px !important;
+    color: {TEXT} !important;
+}}
+[data-testid="stFileUploaderDropzone"] * {{
+    color: {TEXT} !important;
+    fill: {TEXT_MUTED} !important;
+}}
+[data-testid="stFileUploaderDropzone"] button {{
+    background-color: {BG} !important;
+    border: 1px solid {BORDER} !important;
+    color: {TEXT} !important;
+    border-radius: 3px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+}}
+[data-testid="stFileUploaderDropzone"] small,
+[data-testid="stFileUploaderDropzone"] span {{
+    color: {TEXT_MUTED} !important;
+    font-size: 0.75rem !important;
 }}
 
 /* ── Metrics ── */
@@ -217,12 +271,60 @@ hr {{
     line-height: 1.55 !important;
 }}
 
-/* ── Status widget ── */
-[data-testid="stStatusWidget"] {{
-    border-radius: 3px !important;
-    border: 1px solid {BORDER} !important;
-    font-size: 0.84rem !important;
+/* ── Status widget (processing bar) — force light ── */
+[data-testid="stStatusWidget"],
+div[data-testid="stStatusWidget"],
+.stStatus, [class*="StatusWidget"] {{
     background-color: {SURFACE} !important;
+    border: 1px solid {BORDER} !important;
+    border-radius: 4px !important;
+    color: {TEXT} !important;
+    font-size: 0.84rem !important;
+}}
+[data-testid="stStatusWidget"] *,
+.stStatus *, [class*="StatusWidget"] * {{
+    color: {TEXT} !important;
+    background-color: transparent !important;
+}}
+/* The collapsible header row of the status widget */
+[data-testid="stStatusWidget"] > div:first-child {{
+    background-color: {SURFACE} !important;
+    border-radius: 4px !important;
+    padding: 0.6rem 0.9rem !important;
+}}
+/* Spinner/icon color */
+[data-testid="stStatusWidget"] svg {{
+    stroke: {ACCENT} !important;
+    fill: none !important;
+}}
+/* "complete" state - green check is OK, just fix background */
+[data-testid="stStatusWidget"][data-state="complete"],
+[data-testid="stStatusWidget"][data-state="error"] {{
+    background-color: {SURFACE} !important;
+}}
+
+/* ── Hide "Press Enter to submit form" hint ── */
+.stTextInput [data-testid="InputInstructions"],
+small[data-testid="InputInstructions"] {{
+    display: none !important;
+}}
+
+/* ── Form wrapper card ── */
+[data-testid="stForm"] {{
+    background-color: {SURFACE} !important;
+    border: 1px solid {BORDER} !important;
+    border-radius: 5px !important;
+    padding: 1.5rem !important;
+}}
+
+/* ── Sidebar delete buttons — compact ── */
+[data-testid="stSidebar"] .stButton > button {{
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.65rem !important;
+    margin-top: 0.35rem !important;
+    color: {TEXT_MUTED} !important;
+    border-color: {BORDER} !important;
+    width: 100% !important;
 }}
 
 /* ── Score badge ── */
@@ -472,29 +574,59 @@ with st.sidebar:
     else:
         for entry in reversed(history[-20:]):
             grade   = entry.get("grade", "")
-            marker  = GRADE_MARKERS.get(grade, "")
             result  = entry.get("result") or {}
             failed  = not result
             score   = entry.get("overall_linkedin_fit", "—")
-            name    = entry.get("founder_name", "")
-            header  = f"[failed] {name}" if failed else f"{marker}  {name} · {score}/100"
-            with st.expander(header):
-                st.caption(entry.get("timestamp", "")[:16].replace("T", " "))
-                if entry.get("company_name"):
-                    st.caption(entry["company_name"])
-                if entry.get("linkedin_url"):
-                    st.markdown(
-                        f'<div class="iq-url-row"><a href="{entry["linkedin_url"]}" '
-                        f'target="_blank">LinkedIn ↗</a></div>',
-                        unsafe_allow_html=True,
-                    )
-                if failed:
-                    st.warning("Scrape failed.")
-                else:
-                    st.caption(entry.get("summary", "")[:200])
-                if st.button("Delete", key=f"del_{entry['id']}"):
-                    delete_entry(entry["id"])
-                    st.rerun()
+            name    = entry.get("founder_name", "Unknown")
+            company = entry.get("company_name", "")
+            ts      = entry.get("timestamp", "")[:10]
+            url     = entry.get("linkedin_url", "")
+            grade_cls = GRADE_COLORS.get(grade, "iq-pill-gray")
+
+            score_display = (
+                f'<span style="color:#991B1B;font-weight:700">Failed</span>'
+                if failed
+                else f'<span style="font-size:1.1rem;font-weight:700;letter-spacing:-0.02em">{score}</span>'
+                     f'<span style="font-size:0.7rem;color:{TEXT_MUTED}">/100</span>'
+            )
+            grade_badge = (
+                "" if failed
+                else f'<span class="iq-pill {grade_cls}" style="font-size:0.58rem">{grade}</span>'
+            )
+            company_line = f'<div style="font-size:0.72rem;color:{TEXT_MUTED};margin-top:0.1rem">{company}</div>' if company else ""
+            url_line = (
+                f'<div style="font-size:0.72rem;margin-top:0.25rem">'
+                f'<a href="{url}" target="_blank" style="color:{ACCENT};text-decoration:none">LinkedIn ↗</a>'
+                f'</div>'
+                if url else ""
+            )
+
+            st.markdown(
+                f"""
+                <div style="
+                    background:{BG};
+                    border:1px solid {BORDER};
+                    border-radius:4px;
+                    padding:0.7rem 0.8rem;
+                    margin-bottom:0.5rem;
+                ">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem">
+                        <div style="font-size:0.85rem;font-weight:600;color:{TEXT};line-height:1.2">{name}</div>
+                        <div style="text-align:right;flex-shrink:0">{score_display}</div>
+                    </div>
+                    {company_line}
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.4rem">
+                        {grade_badge}
+                        <span style="font-size:0.68rem;color:{TEXT_LIGHT}">{ts}</span>
+                    </div>
+                    {url_line}
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            if st.button("Delete", key=f"del_{entry['id']}"):
+                delete_entry(entry["id"])
+                st.rerun()
 
 
 # ── Header ────────────────────────────────────────────────────────────────────
@@ -516,6 +648,10 @@ st.caption(
 st.divider()
 
 # ── Input form ────────────────────────────────────────────────────────────────
+st.markdown(
+    f'<div class="iq-section-label">New Analysis</div>',
+    unsafe_allow_html=True,
+)
 with st.form("founder_form"):
     col1, col2 = st.columns(2, gap="large")
     with col1:
