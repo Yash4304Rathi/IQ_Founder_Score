@@ -1,0 +1,1856 @@
+[
+  {
+    "id": "e8a6a61c-632b-4426-a3f3-76f27fc4b2ae",
+    "timestamp": "2026-04-21T02:52:48.181650+00:00",
+    "founder_name": "Yash Rathi",
+    "company_name": "",
+    "linkedin_url": "https://www.linkedin.com/in/yashrathi4304/",
+    "url_source": "auto",
+    "match_confidence": "medium",
+    "overall_linkedin_fit": 0,
+    "grade": "Strong No",
+    "summary": "No LinkedIn profile data is available for Yash Rathi. Without access to career history, education, skills, or experience, it is impossible to assess founder quality, market fit, or execution capability from LinkedIn alone.",
+    "result": {
+      "summary": "No LinkedIn profile data is available for Yash Rathi. Without access to career history, education, skills, or experience, it is impossible to assess founder quality, market fit, or execution capability from LinkedIn alone.",
+      "career_signal": {
+        "score": 0,
+        "reasoning": "No profile data available to evaluate career progression, roles, or companies."
+      },
+      "founder_relevance": {
+        "score": 0,
+        "reasoning": "No profile data available to assess founding experience, side projects, or entrepreneurial activities."
+      },
+      "execution_signal": {
+        "score": 0,
+        "reasoning": "No profile data available to evaluate shipping record, scope of responsibility, or measurable outcomes."
+      },
+      "credibility_signal": {
+        "score": 0,
+        "reasoning": "No profile data available to assess education, past employers, recognitions, or credentials."
+      },
+      "overall_linkedin_fit": 0,
+      "grade": "Strong No",
+      "confidence_score": 0,
+      "strengths": [
+        "None identifiable from available data"
+      ],
+      "concerns": [
+        "LinkedIn profile is completely unavailable or inaccessible",
+        "No verifiable career history, education, or professional background",
+        "Cannot assess any dimension of founder quality without basic profile information",
+        "Company name was also not provided, limiting context"
+      ],
+      "missing_information": [
+        "All career history and professional experience",
+        "Educational background and credentials",
+        "Any founding or entrepreneurial experience",
+        "Technical skills or domain expertise",
+        "Professional network and credibility signals",
+        "Current role and responsibilities",
+        "Geographic location and market context",
+        "Any projects, publications, or demonstrable work"
+      ],
+      "next_questions_for_diligence": [
+        "Can you provide an accessible LinkedIn profile URL or an updated resume/CV?",
+        "What is your relevant background and experience for this venture?",
+        "What companies have you worked at previously and in what capacity?",
+        "Do you have prior founding experience or evidence of building/shipping products?",
+        "What is your educational background and how does it relate to the problem you're solving?"
+      ]
+    },
+    "profile": {
+      "error": "❌ Users on the free Apify plan can run the actor through the UI and not via other methods."
+    }
+  },
+  {
+    "id": "744ade4b-ceea-44eb-a35f-646da5c25786",
+    "timestamp": "2026-04-21T03:01:07.369470+00:00",
+    "founder_name": "Yash Rathi",
+    "company_name": "",
+    "linkedin_url": "https://www.linkedin.com/in/yashrathi4304/",
+    "url_source": "auto",
+    "match_confidence": "medium",
+    "overall_linkedin_fit": 0,
+    "grade": "",
+    "summary": "",
+    "result": {},
+    "profile": {
+      "_scrape_error": "❌ Users on the free Apify plan can run the actor through the UI and not via other methods.",
+      "_scrape_url": "https://www.linkedin.com/in/yashrathi4304/",
+      "_run_id": "OgQRsshmWAwNnVMC3",
+      "_run_status": "SUCCEEDED",
+      "_raw_item": {
+        "error": "❌ Users on the free Apify plan can run the actor through the UI and not via other methods."
+      }
+    }
+  },
+  {
+    "id": "7930e8b5-117a-449e-a877-6de26fc4c5f1",
+    "timestamp": "2026-04-21T03:08:46.755288+00:00",
+    "founder_name": "Yash Rathi",
+    "company_name": "",
+    "linkedin_url": "https://www.linkedin.com/in/yashrathi4304/",
+    "url_source": "auto",
+    "match_confidence": "medium",
+    "overall_linkedin_fit": 0,
+    "grade": "",
+    "summary": "",
+    "result": {},
+    "profile": {
+      "_scrape_error": "❌ Users on the free Apify plan can run the actor through the UI and not via other methods.",
+      "_scrape_url": "https://www.linkedin.com/in/yashrathi4304/",
+      "_run_id": "ftaVdRfToCf5iwKqR",
+      "_run_status": "SUCCEEDED",
+      "_raw_item": {
+        "error": "❌ Users on the free Apify plan can run the actor through the UI and not via other methods."
+      }
+    }
+  },
+  {
+    "id": "2c427852-8e08-490f-a843-4e1f5afe74ca",
+    "timestamp": "2026-04-21T03:11:40.313489+00:00",
+    "founder_name": "Yash Rathi",
+    "company_name": "",
+    "linkedin_url": "https://www.linkedin.com/in/yashrathi4304/",
+    "url_source": "auto",
+    "match_confidence": "medium",
+    "overall_linkedin_fit": 0,
+    "grade": "",
+    "summary": "",
+    "result": {},
+    "profile": {
+      "_scrape_error": "API returned status 401: ",
+      "_scrape_url": "https://www.linkedin.com/in/yashrathi4304/",
+      "_run_id": "DdArSNuGZ9xhFLeZA",
+      "_run_status": "SUCCEEDED",
+      "_raw_item": {
+        "url": "https://www.linkedin.com/in/yashrathi4304/",
+        "error": "API returned status 401: "
+      }
+    }
+  },
+  {
+    "id": "9c9d438e-6e05-4af2-b971-3f767522f668",
+    "timestamp": "2026-04-21T03:45:32.178108+00:00",
+    "founder_name": "yash rathi",
+    "company_name": "",
+    "linkedin_url": "https://www.linkedin.com/in/yashrathi4304/",
+    "url_source": "auto",
+    "match_confidence": "medium",
+    "overall_linkedin_fit": 0,
+    "grade": "",
+    "summary": "",
+    "result": {},
+    "profile": {
+      "_scrape_error": "linkdapi package not installed (run `pip install -r requirements.txt`)",
+      "_scrape_url": "https://www.linkedin.com/in/yashrathi4304/",
+      "_provider": "linkdapi"
+    }
+  },
+  {
+    "id": "994990ea-35e7-4d9b-b1d3-dbaaa6d4dbf0",
+    "timestamp": "2026-04-21T03:51:22.399115+00:00",
+    "founder_name": "Yash Rathi",
+    "company_name": "",
+    "linkedin_url": "https://www.linkedin.com/in/yashrathi4304/",
+    "url_source": "auto",
+    "match_confidence": "medium",
+    "overall_linkedin_fit": 25,
+    "grade": "Strong No",
+    "summary": "Yash Rathi is currently at India Quotient with prior experience at two other VC firms (Titan Capital, 3one4 Capital) and a founder's office role at Adiabatic. His LinkedIn profile shows a career trajectory focused on venture capital and investing rather than operating or founding companies, with educational background in Electronics & Instrumentation Engineering from BITS Pilani Goa.",
+    "result": {
+      "summary": "Yash Rathi is currently at India Quotient with prior experience at two other VC firms (Titan Capital, 3one4 Capital) and a founder's office role at Adiabatic. His LinkedIn profile shows a career trajectory focused on venture capital and investing rather than operating or founding companies, with educational background in Electronics & Instrumentation Engineering from BITS Pilani Goa.",
+      "career_signal": {
+        "score": 5,
+        "reasoning": "Has worked at three credible VC firms (India Quotient, Titan Capital, 3one4 Capital) and one founder's office (Adiabatic), showing exposure to the startup ecosystem. However, the profile lacks specifics on role duration, responsibilities, or achievements at these firms."
+      },
+      "founder_relevance": {
+        "score": 2,
+        "reasoning": "No evidence of founding, building, or shipping products. All listed roles are investor-side (VC firms) or support roles (founder's office). The profile suggests observer/investor orientation rather than builder/operator experience."
+      },
+      "execution_signal": {
+        "score": 1,
+        "reasoning": "No concrete evidence of shipping products, managing teams, hitting KPIs, or delivering measurable outcomes. The profile mentions interests and passion but provides no specific achievements, projects built, or execution milestones at any role."
+      },
+      "credibility_signal": {
+        "score": 6,
+        "reasoning": "BITS Pilani Goa is a strong engineering institution. Experience at reputable VC firms (Titan Capital, 3one4 Capital, India Quotient) adds credibility. CFA Level 1 cleared and TEDx/HPAIR/180 DC mentions show initiative. However, lacks depth on what was accomplished at these positions."
+      },
+      "overall_linkedin_fit": 25,
+      "grade": "Strong No",
+      "confidence_score": 8,
+      "strengths": [
+        "Strong educational pedigree from BITS Pilani Goa with Engineering + Finance background",
+        "Exposure to multiple credible VC firms (Titan Capital, 3one4 Capital, India Quotient)",
+        "CFA Level 1 cleared shows financial acumen and discipline",
+        "Large network (8,667 connections, 9,029 followers) suggests strong relationship-building",
+        "Exposure to founder's office at Adiabatic provides some operating context"
+      ],
+      "concerns": [
+        "No evidence of founding, building, or operating a company—entire career is investor-side",
+        "Profile lacks specifics on role durations, responsibilities, deal involvement, or achievements",
+        "No demonstrated execution signal—nothing shipped, built, or delivered",
+        "Career trajectory suggests analyst/investor rather than operator/founder archetype",
+        "Profile reads more like an aspiring VC professional than a founder seeking capital"
+      ],
+      "missing_information": [
+        "Why is someone currently at India Quotient being evaluated as a founder? Is this a side project or transition?",
+        "Any actual founding or building experience outside of VC roles",
+        "Specific tenure and accomplishments at each VC firm",
+        "What problem is being solved and what company is being pitched",
+        "Any concrete evidence of technical building, product shipping, or operational experience",
+        "Details on the Adiabatic founder's office role—scope, duration, outcomes"
+      ],
+      "next_questions_for_diligence": [
+        "What is the venture you're founding and why are you transitioning from VC to operating?",
+        "Can you describe something specific you've built, shipped, or executed end-to-end outside of investing work?",
+        "What lived experience or deep insight into this problem do you have beyond pattern recognition from VC?",
+        "During your time at Adiabatic's founder's office, what operational responsibilities did you own and what were the outcomes?",
+        "Who are your co-founders and what complementary operating/building experience do they bring?"
+      ]
+    },
+    "profile": {
+      "id": 1055687439,
+      "urn": "ACoAAD7sgw8Bm98ilxqgYoWx9Vw8w6s-1pTFYks",
+      "username": "yashrathi4304",
+      "firstName": "Yash",
+      "lastName": "Rathi",
+      "isCreator": true,
+      "isPremium": true,
+      "isInfluencer": false,
+      "isOpenToWork": false,
+      "isHiring": false,
+      "followerCount": 9029,
+      "connectionsCount": 8667,
+      "profilePicture": "https://media.licdn.com/dms/image/v2/D4D03AQEp5I1zyVyOEA/profile-displayphoto-scale_100_100/B4DZ2AFRz4KIAc-/0/1775970361828?e=1778112000&v=beta&t=6JATmhTYHX09qnTheV5_byYTBPN-ps9_-hvX_u8pqH4",
+      "profilePictures": [
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQEp5I1zyVyOEA/profile-displayphoto-scale_400_400/B4DZ2AFRz4KIAg-/0/1775970361828?e=1778112000&v=beta&t=vhfrMO03WevCyhHuyaelMvbjF3wyQodogmcnOf8d-c0",
+          "width": 400,
+          "height": 400
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQEp5I1zyVyOEA/profile-displayphoto-scale_200_200/B4DZ2AFRz4KIAY-/0/1775970361828?e=1778112000&v=beta&t=4OIIbLXfEpIywdA_axXvIp5vaZ7cnKSSiF44UwFKCr0",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQEp5I1zyVyOEA/profile-displayphoto-crop_800_800/B4DZ2AFRz4KIAI-/0/1775970361738?e=1778112000&v=beta&t=Zu4Z_5CAOAss662Li-iQAqjUHjz7HlCz-dVQeotOFvo",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQEp5I1zyVyOEA/profile-displayphoto-scale_100_100/B4DZ2AFRz4KIAc-/0/1775970361828?e=1778112000&v=beta&t=6JATmhTYHX09qnTheV5_byYTBPN-ps9_-hvX_u8pqH4",
+          "width": 100,
+          "height": 100
+        }
+      ],
+      "backgroundImage": [
+        {
+          "width": 800,
+          "height": 200,
+          "url": "https://media.licdn.com/dms/image/v2/D4D16AQFzJi7SXPDSyw/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1670645501872?e=1778112000&v=beta&t=TSdGs5DGiG3x0k8FWfR3seAEBYJPFQWmkAwEEb5y3l0"
+        },
+        {
+          "width": 800,
+          "height": 200,
+          "url": "https://media.licdn.com/dms/image/v2/D4D16AQFzJi7SXPDSyw/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1670645501872?e=1778112000&v=beta&t=uzETARIUhhwWPgoHjk7lfqxktuee7Ez5VNPoEbapgMQ"
+        }
+      ],
+      "summary": "Passionate about Venture Capital, I thrive on the challenges of building, scaling, and selling ventures. Beyond my academic pursuits, I delve into areas like Deep-tech, Consumer, Consumer-tech, Sustainability, Web3, Geopolitics, Finance, and Technology, driven by a relentless curiosity. Eager to learn and grow, I am excited to explore the intersections of innovation and investment. Let's connect and delve into opportunities for collaboration and impact.",
+      "headline": "India Quotient | Ex - Titan Capital, 3one4 Capital, Founder’s Office - Adiabatic | CFA L1 Cleared | TEDx BITS Goa | 180 DC | HPAIR | Finance and Consulting",
+      "geo": {
+        "country": "India",
+        "city": "Aurangabad, Maharashtra",
+        "full": "Aurangabad, Maharashtra, India",
+        "countryCode": "in"
+      },
+      "industry": {
+        "name": "Financial Services",
+        "urn": "urn:li:fsd_industry:43"
+      },
+      "currentPositions": [
+        {
+          "companyName": "Titan Capital",
+          "company": {
+            "id": "20461156",
+            "name": "Titan Capital",
+            "url": "https://www.linkedin.com/company/titan-capital-vc/",
+            "logoURL": "https://media.licdn.com/dms/image/v2/C510BAQFYVNKIGotOIQ/company-logo_400_400/company-logo_400_400/0/1630612512912?e=1778112000&v=beta&t=-wA-LolrNxkGnK7QMdimFKySQbHd-strWhph8nn1hm4"
+          }
+        }
+      ],
+      "currentEducation": [
+        {
+          "schoolName": "Birla Institute of Technology and Science, Pilani - Goa Campus",
+          "school": {
+            "id": 3243218,
+            "urn": "3243218",
+            "name": "Birla Institute of Technology and Science, Pilani - Goa Campus",
+            "url": "https://www.linkedin.com/school/birla-institute-of-technology-and-science-pilani---goa-campus/",
+            "logoURL": "https://media.licdn.com/dms/image/v2/C4E0BAQG8khSb9vCdJg/company-logo_400_400/company-logo_400_400/0/1631349331520?e=1778112000&v=beta&t=dVqrrkvYohrWsuTPeWBcsfGbCfbb0tWcVfov3l-fEuE"
+          },
+          "company": {
+            "id": "1134790",
+            "name": "Birla Institute of Technology and Science, Pilani - Goa Campus",
+            "url": "https://www.linkedin.com/school/birla-institute-of-technology-and-science-pilani---goa-campus/",
+            "logoURL": "https://media.licdn.com/dms/image/v2/C4E0BAQG8khSb9vCdJg/company-logo_400_400/company-logo_400_400/0/1631349331520?e=1778112000&v=beta&t=dVqrrkvYohrWsuTPeWBcsfGbCfbb0tWcVfov3l-fEuE"
+          }
+        }
+      ],
+      "languages": [],
+      "educations": [
+        {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "fieldOfStudy": "",
+          "degree": "BE Electronics and Instrumentation and Minor in Finance",
+          "grade": "",
+          "schoolName": "Birla Institute of Technology and Science, Pilani - Goa Campus",
+          "description": "",
+          "activities": "",
+          "url": "https://www.linkedin.com/school/birla-institute-of-technology-and-science-pilani---goa-campus/",
+          "schoolId": "1134790",
+          "logo": [
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4E0BAQG8khSb9vCdJg/company-logo_200_200/company-logo_200_200/0/1631349331520?e=1778112000&v=beta&t=5NR-2uAIBEuWtnS2BAuS8S5GdW3flIxRq9hZ7It-Gek",
+              "width": 200,
+              "height": 200
+            },
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4E0BAQG8khSb9vCdJg/company-logo_100_100/company-logo_100_100/0/1631349331520?e=1778112000&v=beta&t=5lwZMZa1LDVuwkV33O-5J6ifFUjrFT2wvLjeJHRYf8Q",
+              "width": 100,
+              "height": 100
+            },
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4E0BAQG8khSb9vCdJg/company-logo_400_400/company-logo_400_400/0/1631349331520?e=1778112000&v=beta&t=dVqrrkvYohrWsuTPeWBcsfGbCfbb0tWcVfov3l-fEuE",
+              "width": 400,
+              "height": 400
+            }
+          ]
+        },
+        {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "fieldOfStudy": "Science",
+          "degree": "Class 11 and 12 ",
+          "grade": "",
+          "schoolName": "Deogiri College Aurangabad",
+          "description": "",
+          "activities": "Bifocal Subject - Electronics",
+          "url": "https://www.linkedin.com/school/deogiri-college-aurangabad/",
+          "schoolId": "15108038",
+          "logo": []
+        },
+        {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "fieldOfStudy": "",
+          "degree": "School",
+          "grade": "91.20 percent",
+          "schoolName": "BSGM School ",
+          "description": "",
+          "activities": "School House Captain \nGovernment Scholarship \nMacmillan Merit Student \nMTSE Scholar \nTable Soccer - State gold medalist \nFootball DSO Team member",
+          "url": "",
+          "schoolId": "",
+          "logo": []
+        }
+      ],
+      "position": [
+        {
+          "companyId": 20461156,
+          "companyName": "Titan Capital",
+          "companyUsername": "titan-capital-vc",
+          "companyURL": "https://www.linkedin.com/company/titan-capital-vc/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C510BAQFYVNKIGotOIQ/company-logo_400_400/company-logo_400_400/0/1630612512912?e=1778112000&v=beta&t=-wA-LolrNxkGnK7QMdimFKySQbHd-strWhph8nn1hm4",
+          "companyIndustry": "Venture Capital & Private Equity",
+          "companyStaffCountRange": "11 - 50",
+          "title": "Investments Team ",
+          "multiLocaleTitle": {
+            "en_US": "Investments Team "
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Titan Capital"
+          },
+          "location": "",
+          "locationType": "",
+          "description": "Titan Capital is an early-stage, sector-agnostic Venture Capital firm with a robust legacy of supporting successful startups, including renowned names like Razorpay, Ola, Mamaearth, Jupiter, Urban Company, and many more.",
+          "employmentType": "Internship",
+          "start": {
+            "year": 2024,
+            "month": 11,
+            "day": 0
+          },
+          "end": {
+            "year": 2025,
+            "month": 11,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 10554430,
+          "companyName": "3one4 Capital",
+          "companyUsername": "3one4-capital",
+          "companyURL": "https://www.linkedin.com/company/3one4-capital/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C560BAQG3AdO-q5yKVg/company-logo_400_400/company-logo_400_400/0/1630644657431/3one4_capital_logo?e=1778112000&v=beta&t=nwRFDmN-7RKiJtC3gYzJS4BlN5n3s9E2CDXLxWvxpZQ",
+          "companyIndustry": "Venture Capital & Private Equity",
+          "companyStaffCountRange": "11 - 50",
+          "title": "Research and Strategy Intern",
+          "multiLocaleTitle": {
+            "en_US": "Research and Strategy Intern"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "3one4 Capital"
+          },
+          "location": "Bengaluru, Karnataka, India",
+          "locationType": "",
+          "description": "Worked with the Research and Strategy team, especially focusing on deep-tech areas.",
+          "employmentType": "Internship",
+          "start": {
+            "year": 2024,
+            "month": 6,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 7,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 85656436,
+          "companyName": "Adiabatic ",
+          "companyUsername": "adiabatic-technologies-pvt-ltd",
+          "companyURL": "https://www.linkedin.com/company/adiabatic-technologies-pvt-ltd/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQHuo_U6IWofsA/company-logo_400_400/company-logo_400_400/0/1666986119909?e=1778112000&v=beta&t=xV8T9wE3b3Q6OGOI5rQ6NWH-9Wn9widxQmnULkXdUIc",
+          "companyIndustry": "Renewables & Environment",
+          "companyStaffCountRange": "11 - 50",
+          "title": "Founders Office (Investment Lead) ",
+          "multiLocaleTitle": {
+            "en_US": "Founders Office (Investment Lead) "
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Adiabatic "
+          },
+          "location": "Hyderabad, Telangana, India",
+          "locationType": "",
+          "description": "Startup founded by Alumni of IIT Hyderabad involved in developing cutting edge battery technology for Electric Vehicles for India 🇮🇳",
+          "employmentType": "Part-time",
+          "start": {
+            "year": 2024,
+            "month": 3,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 7,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 14618782,
+          "companyName": "BGIIES - BITS Goa Innovation, Incubation & Entrepreneurship Society",
+          "companyUsername": "bgiies",
+          "companyURL": "https://www.linkedin.com/company/bgiies/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQGjhUQUw1OMQg/company-logo_400_400/company-logo_400_400/0/1675859050396/bgiies_logo?e=1778112000&v=beta&t=iGynVw-tLySyINkCFNU_E5fIVHsp1h4Evth48iPG980",
+          "companyIndustry": "Management Consulting",
+          "companyStaffCountRange": "2 - 10",
+          "title": "Student Invetsment Lead",
+          "multiLocaleTitle": {
+            "en_US": "Student Invetsment Lead"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "BGIIES - BITS Goa Innovation, Incubation & Entrepreneurship Society"
+          },
+          "location": "Goa, India",
+          "locationType": "",
+          "description": "Sourced and evaluated startups for the RISE Fund. Made 3 pre-seed investments totalling funds worth Rs 12 Lakhs",
+          "employmentType": "Part-time",
+          "start": {
+            "year": 2024,
+            "month": 3,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 4,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 76977440,
+          "companyName": "Almanack",
+          "companyUsername": "almanack",
+          "companyURL": "https://www.linkedin.com/company/almanack/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQFhOP6vbcOvVA/company-logo_400_400/company-logo_400_400/0/1635510335571?e=1778112000&v=beta&t=kxWZyS30h5G-Y7jwpXMBCesfureEM40N_LEfachpJI8",
+          "companyIndustry": "Internet",
+          "companyStaffCountRange": "2 - 10",
+          "title": "Growth Manager",
+          "multiLocaleTitle": {
+            "en_US": "Growth Manager"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Almanack"
+          },
+          "location": "Goa, India",
+          "locationType": "",
+          "description": "",
+          "employmentType": "Internship",
+          "start": {
+            "year": 2023,
+            "month": 1,
+            "day": 0
+          },
+          "end": {
+            "year": 2023,
+            "month": 3,
+            "day": 0
+          }
+        }
+      ],
+      "fullPositions": [
+        {
+          "companyId": 20461156,
+          "companyName": "Titan Capital",
+          "companyUsername": "titan-capital-vc",
+          "companyURL": "https://www.linkedin.com/company/titan-capital-vc/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C510BAQFYVNKIGotOIQ/company-logo_400_400/company-logo_400_400/0/1630612512912?e=1778112000&v=beta&t=-wA-LolrNxkGnK7QMdimFKySQbHd-strWhph8nn1hm4",
+          "companyIndustry": "Venture Capital & Private Equity",
+          "companyStaffCountRange": "11 - 50",
+          "title": "Investments Team ",
+          "multiLocaleTitle": {
+            "en_US": "Investments Team "
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Titan Capital"
+          },
+          "location": "",
+          "locationType": "",
+          "description": "Titan Capital is an early-stage, sector-agnostic Venture Capital firm with a robust legacy of supporting successful startups, including renowned names like Razorpay, Ola, Mamaearth, Jupiter, Urban Company, and many more.",
+          "employmentType": "Internship",
+          "start": {
+            "year": 2024,
+            "month": 11,
+            "day": 0
+          },
+          "end": {
+            "year": 2025,
+            "month": 11,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 10554430,
+          "companyName": "3one4 Capital",
+          "companyUsername": "3one4-capital",
+          "companyURL": "https://www.linkedin.com/company/3one4-capital/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C560BAQG3AdO-q5yKVg/company-logo_400_400/company-logo_400_400/0/1630644657431/3one4_capital_logo?e=1778112000&v=beta&t=nwRFDmN-7RKiJtC3gYzJS4BlN5n3s9E2CDXLxWvxpZQ",
+          "companyIndustry": "Venture Capital & Private Equity",
+          "companyStaffCountRange": "11 - 50",
+          "title": "Research and Strategy Intern",
+          "multiLocaleTitle": {
+            "en_US": "Research and Strategy Intern"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "3one4 Capital"
+          },
+          "location": "Bengaluru, Karnataka, India",
+          "locationType": "",
+          "description": "Worked with the Research and Strategy team, especially focusing on deep-tech areas.",
+          "employmentType": "Internship",
+          "start": {
+            "year": 2024,
+            "month": 6,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 7,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 85656436,
+          "companyName": "Adiabatic ",
+          "companyUsername": "adiabatic-technologies-pvt-ltd",
+          "companyURL": "https://www.linkedin.com/company/adiabatic-technologies-pvt-ltd/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQHuo_U6IWofsA/company-logo_400_400/company-logo_400_400/0/1666986119909?e=1778112000&v=beta&t=xV8T9wE3b3Q6OGOI5rQ6NWH-9Wn9widxQmnULkXdUIc",
+          "companyIndustry": "Renewables & Environment",
+          "companyStaffCountRange": "11 - 50",
+          "title": "Founders Office (Investment Lead) ",
+          "multiLocaleTitle": {
+            "en_US": "Founders Office (Investment Lead) "
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Adiabatic "
+          },
+          "location": "Hyderabad, Telangana, India",
+          "locationType": "",
+          "description": "Startup founded by Alumni of IIT Hyderabad involved in developing cutting edge battery technology for Electric Vehicles for India 🇮🇳",
+          "employmentType": "Part-time",
+          "start": {
+            "year": 2024,
+            "month": 3,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 7,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 14618782,
+          "companyName": "BGIIES - BITS Goa Innovation, Incubation & Entrepreneurship Society",
+          "companyUsername": "bgiies",
+          "companyURL": "https://www.linkedin.com/company/bgiies/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQGjhUQUw1OMQg/company-logo_400_400/company-logo_400_400/0/1675859050396/bgiies_logo?e=1778112000&v=beta&t=iGynVw-tLySyINkCFNU_E5fIVHsp1h4Evth48iPG980",
+          "companyIndustry": "Management Consulting",
+          "companyStaffCountRange": "2 - 10",
+          "title": "Student Invetsment Lead",
+          "multiLocaleTitle": {
+            "en_US": "Student Invetsment Lead"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "BGIIES - BITS Goa Innovation, Incubation & Entrepreneurship Society"
+          },
+          "location": "Goa, India",
+          "locationType": "",
+          "description": "Sourced and evaluated startups for the RISE Fund. Made 3 pre-seed investments totalling funds worth Rs 12 Lakhs",
+          "employmentType": "Part-time",
+          "start": {
+            "year": 2024,
+            "month": 3,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 4,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 76977440,
+          "companyName": "Almanack",
+          "companyUsername": "almanack",
+          "companyURL": "https://www.linkedin.com/company/almanack/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQFhOP6vbcOvVA/company-logo_400_400/company-logo_400_400/0/1635510335571?e=1778112000&v=beta&t=kxWZyS30h5G-Y7jwpXMBCesfureEM40N_LEfachpJI8",
+          "companyIndustry": "Internet",
+          "companyStaffCountRange": "2 - 10",
+          "title": "Growth Manager",
+          "multiLocaleTitle": {
+            "en_US": "Growth Manager"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Almanack"
+          },
+          "location": "Goa, India",
+          "locationType": "",
+          "description": "",
+          "employmentType": "Internship",
+          "start": {
+            "year": 2023,
+            "month": 1,
+            "day": 0
+          },
+          "end": {
+            "year": 2023,
+            "month": 3,
+            "day": 0
+          }
+        }
+      ],
+      "skills": [
+        {
+          "name": "Venture Capital",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Consulting",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Research Skills",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Research Projects",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Python (Programming Language)",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Data Scraping",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Marketing",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Negotiation",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Market Analysis",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Market Research",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Fundraising",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Web Development",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Finance",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Money Management",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Design",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Social Media Marketing",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Entrepreneurship",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Business Development",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Social Media",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Sponsorship",
+          "passedSkillAssessment": false
+        }
+      ],
+      "courses": [],
+      "certifications": [
+        {
+          "name": "CFA Program Level I",
+          "start": {
+            "year": 2025,
+            "month": 10,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "authority": "CFA Institute",
+          "company": {
+            "name": "CFA Institute",
+            "universalName": "",
+            "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQEwDwsnzE7tJw/company-logo_200_200/B4EZx7tl6JGgAQ-/0/1771602075977/cfainstitute_logo?e=1778112000&v=beta&t=mBWbeuHjeobE01NNlwv5uV_FRxhvnLlPxzG1Bt4gHoc",
+            "staffCountRange": {},
+            "headquarter": {}
+          },
+          "timePeriod": {
+            "start": {
+              "year": 2025,
+              "month": 10,
+              "day": 0
+            },
+            "end": {
+              "year": 0,
+              "month": 0,
+              "day": 0
+            }
+          }
+        },
+        {
+          "name": "Bloomberg Market Concepts",
+          "start": {
+            "year": 2025,
+            "month": 2,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "authority": "Bloomberg",
+          "company": {
+            "name": "Bloomberg",
+            "universalName": "",
+            "logo": "https://media.licdn.com/dms/image/v2/C4D0BAQF0uyE7RGKDGg/company-logo_200_200/company-logo_200_200/0/1631374698859/bloomberg_lp_logo?e=1778112000&v=beta&t=CKeqdTI4NpGH3QYg9Q0zQ4qZAoZjB4PARJzpJlVQdbQ",
+            "staffCountRange": {},
+            "headquarter": {}
+          },
+          "timePeriod": {
+            "start": {
+              "year": 2025,
+              "month": 2,
+              "day": 0
+            },
+            "end": {
+              "year": 0,
+              "month": 0,
+              "day": 0
+            }
+          }
+        },
+        {
+          "name": "Environmental Social Governance",
+          "start": {
+            "year": 2025,
+            "month": 2,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "authority": "Bloomberg",
+          "company": {
+            "name": "Bloomberg",
+            "universalName": "",
+            "logo": "https://media.licdn.com/dms/image/v2/C4D0BAQF0uyE7RGKDGg/company-logo_200_200/company-logo_200_200/0/1631374698859/bloomberg_lp_logo?e=1778112000&v=beta&t=CKeqdTI4NpGH3QYg9Q0zQ4qZAoZjB4PARJzpJlVQdbQ",
+            "staffCountRange": {},
+            "headquarter": {}
+          },
+          "timePeriod": {
+            "start": {
+              "year": 2025,
+              "month": 2,
+              "day": 0
+            },
+            "end": {
+              "year": 0,
+              "month": 0,
+              "day": 0
+            }
+          }
+        }
+      ],
+      "projects": [],
+      "publications": [],
+      "volunteering": [
+        {
+          "title": "Director of Consulting",
+          "multiLocaleTitle": {
+            "en_US": "Director of Consulting"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "180 Degrees Consulting BITS Goa"
+          },
+          "multiLocaleDescription": {
+            "en_US": "- Best Junior Consultant for the Year 2023-2024 \n- Worked with various clients ranging from Western VC firms, Startups to Government"
+          },
+          "start": {
+            "year": 2024,
+            "month": 1,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "cause": "SOCIAL_SERVICES",
+          "description": "- Best Junior Consultant for the Year 2023-2024 \n- Worked with various clients ranging from Western VC firms, Startups to Government",
+          "companyName": "180 Degrees Consulting BITS Goa",
+          "CompanyId": "53491779",
+          "companyUrl": "https://www.linkedin.com/company/180dcbitsgoa/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQHGw0UyUouaKw/company-logo_400_400/company-logo_400_400/0/1630620193079/180dcbitsgoa_logo?e=1778112000&v=beta&t=suY4tmHfuwo57q-NgoVXd0Jf6jqjAF2OezcpAhnrUx8"
+        },
+        {
+          "title": "Head of Sponsorship",
+          "multiLocaleTitle": {
+            "en_US": "Head of Sponsorship"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "TEDx BITSGoa"
+          },
+          "start": {
+            "year": 2022,
+            "month": 12,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "cause": "EDUCATION",
+          "companyName": "TEDx BITSGoa",
+          "CompanyId": "696955",
+          "companyUrl": "https://www.linkedin.com/company/tedx-bitsgoa/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C510BAQHd9ET717SwZA/company-logo_400_400/company-logo_400_400/0/1630611902573/tedx_bitsgoa_logo?e=1778112000&v=beta&t=QhqZYrH1mTn9JlZMsAXbPS-xX6JQ-O2FQkDE_XqooJk"
+        },
+        {
+          "title": "Senior Associate",
+          "multiLocaleTitle": {
+            "en_US": "Senior Associate"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Center for Entrepreneurial Leadership (CEL), BITS Goa"
+          },
+          "multiLocaleDescription": {
+            "en_US": "- Worked with Sponsorship and Marketing Verticals. \n- Helped examine 500+ startups and bring 6+ sponsors, speakers and mentors"
+          },
+          "start": {
+            "year": 2022,
+            "month": 12,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 8,
+            "day": 0
+          },
+          "cause": "ECONOMIC_EMPOWERMENT",
+          "description": "- Worked with Sponsorship and Marketing Verticals. \n- Helped examine 500+ startups and bring 6+ sponsors, speakers and mentors",
+          "companyName": "Center for Entrepreneurial Leadership (CEL), BITS Goa",
+          "CompanyId": "14676492",
+          "companyUrl": "https://www.linkedin.com/company/celbitsgoa/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQGK_igWF6MwgQ/company-logo_400_400/B4EZjDBaznGYAY-/0/1755618587054/celbitsgoa_logo?e=1778112000&v=beta&t=-fZBB0-xa2ZtGnEW1x09XxPktBrtKgo0m33uPLxyIoE"
+        },
+        {
+          "title": "Senior Associate",
+          "multiLocaleTitle": {
+            "en_US": "Senior Associate"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Department of Finance and Assets Management, BITS Pilani-Goa campus | DoFAM"
+          },
+          "start": {
+            "year": 2022,
+            "month": 3,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 4,
+            "day": 0
+          },
+          "cause": "ECONOMIC_EMPOWERMENT",
+          "companyName": "Department of Finance and Assets Management, BITS Pilani-Goa campus | DoFAM",
+          "CompanyId": "89570612",
+          "companyUrl": "https://www.linkedin.com/company/department-of-finance-and-assets-management/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/D4D0BAQGpyAVT0Tq8oA/company-logo_400_400/company-logo_400_400/0/1665000251962/department_of_finance_and_assets_management_logo?e=1778112000&v=beta&t=anKjrPQfypYavRuV1mq3Wy3eAct07PXRWIr2WbBsUwA"
+        },
+        {
+          "title": "Department Representative | Founding Member",
+          "multiLocaleTitle": {
+            "en_US": "Department Representative | Founding Member"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "BYTE Association"
+          },
+          "multiLocaleDescription": {
+            "en_US": "- Helped manage a combined budget of more than INR 20 Lakhs and achieving a increase in profit by 23%\n- Revived department events like the Open Day, and Department Dinner with interactive features like a gratitude wall, project exhibitions, and fireside talks, fostering a closer bond between students and faculty."
+          },
+          "start": {
+            "year": 2023,
+            "month": 5,
+            "day": 0
+          },
+          "end": {
+            "year": 2023,
+            "month": 12,
+            "day": 0
+          },
+          "cause": "EDUCATION",
+          "description": "- Helped manage a combined budget of more than INR 20 Lakhs and achieving a increase in profit by 23%\n- Revived department events like the Open Day, and Department Dinner with interactive features like a gratitude wall, project exhibitions, and fireside talks, fostering a closer bond between students and faculty.",
+          "companyName": "BYTE Association",
+          "CompanyId": "",
+          "companyUrl": "",
+          "companyLogo": ""
+        },
+        {
+          "title": "Senior Member",
+          "multiLocaleTitle": {
+            "en_US": "Senior Member"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Blockchain Club BITS Goa"
+          },
+          "start": {
+            "year": 2023,
+            "month": 4,
+            "day": 0
+          },
+          "end": {
+            "year": 2024,
+            "month": 8,
+            "day": 0
+          },
+          "companyName": "Blockchain Club BITS Goa",
+          "CompanyId": "26643917",
+          "companyUrl": "https://www.linkedin.com/company/blockchain-club-bits-goa/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQFRydn27IA3nw/company-logo_400_400/company-logo_400_400/0/1664090994014?e=1778112000&v=beta&t=OSLXtz5_ixEvZTbMAMepKUYjzWNp5MclIq6m38H08lE"
+        },
+        {
+          "title": "Crew Member",
+          "multiLocaleTitle": {
+            "en_US": "Crew Member"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "BITSMUN Goa"
+          },
+          "start": {
+            "year": 2022,
+            "month": 12,
+            "day": 0
+          },
+          "end": {
+            "year": 2023,
+            "month": 9,
+            "day": 0
+          },
+          "cause": "POLITICS",
+          "companyName": "BITSMUN Goa",
+          "CompanyId": "3353814",
+          "companyUrl": "https://www.linkedin.com/company/bitsmun-goa/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQG8gt5uwB24Yw/img-crop_100/B56Zl7.6RwI4AM-/0/1758721714538?e=1778112000&v=beta&t=XFEXFPij3Dk87XzuErhQeOS_v-b1I34741ktgUNQ0u8"
+        },
+        {
+          "title": "Crew",
+          "multiLocaleTitle": {
+            "en_US": "Crew"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "The Department of Photography, BITS Pilani - Goa"
+          },
+          "start": {
+            "year": 2022,
+            "month": 12,
+            "day": 0
+          },
+          "end": {
+            "year": 2023,
+            "month": 9,
+            "day": 0
+          },
+          "companyName": "The Department of Photography, BITS Pilani - Goa",
+          "CompanyId": "35917367",
+          "companyUrl": "https://www.linkedin.com/company/dopybitsgoa/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C510BAQGts-4C9j088g/company-logo_400_400/company-logo_400_400/0/1630635117098?e=1778112000&v=beta&t=6vV5c0wo0dXulhYPVNNrUsuffhOhSDvy-g0dKDE2YFo"
+        },
+        {
+          "title": "Mentor",
+          "multiLocaleTitle": {
+            "en_US": "Mentor"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Peer Mentorship Program, BITS Goa"
+          },
+          "multiLocaleDescription": {
+            "en_US": "- Mentored a group of 6 new students in adapting to the college systems from academics to extra ciricullars"
+          },
+          "start": {
+            "year": 2023,
+            "month": 8,
+            "day": 0
+          },
+          "end": {
+            "year": 2023,
+            "month": 11,
+            "day": 0
+          },
+          "cause": "SOCIAL_SERVICES",
+          "description": "- Mentored a group of 6 new students in adapting to the college systems from academics to extra ciricullars",
+          "companyName": "Peer Mentorship Program, BITS Goa",
+          "CompanyId": "82323552",
+          "companyUrl": "https://www.linkedin.com/company/peer-mentorship-program-bits-goa/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C560BAQGihQ1rlY8OVw/company-logo_400_400/company-logo_400_400/0/1657650423554?e=1778112000&v=beta&t=Rn2jga0X1dvUGL0CvXPO9JYn566Jp1V1PvSvscfrNnQ"
+        }
+      ],
+      "organizations": [],
+      "patents": [],
+      "honorsAndAwards": [],
+      "supportedLocales": [
+        {
+          "country": "US",
+          "language": "en"
+        }
+      ],
+      "multiLocaleFirstName": {
+        "en_US": "Yash"
+      },
+      "multiLocaleLastName": {
+        "en_US": "Rathi"
+      },
+      "multiLocaleHeadline": {
+        "en_US": "India Quotient | Ex - Titan Capital, 3one4 Capital, Founder’s Office - Adiabatic | CFA L1 Cleared | TEDx BITS Goa | 180 DC | HPAIR | Finance and Consulting"
+      },
+      "_provider": "linkdapi",
+      "_scrape_url": "https://www.linkedin.com/in/yashrathi4304/",
+      "_username": "yashrathi4304"
+    }
+  },
+  {
+    "id": "409b5f98-f44e-48ad-9051-93de2012415f",
+    "timestamp": "2026-04-21T03:53:01.896656+00:00",
+    "founder_name": "Gagan Goyal",
+    "company_name": "",
+    "linkedin_url": "https://www.linkedin.com/in/gagangoyal/",
+    "url_source": "auto",
+    "match_confidence": "medium",
+    "overall_linkedin_fit": 95,
+    "grade": "Strong Yes",
+    "summary": "Gagan Goyal is a General Partner at India Quotient with entrepreneur-turned-investor credentials. He founded and successfully exited ThinkLABS, a STEM/robotics ed-tech company in 2016, and has since built an active angel portfolio of 20+ startups including Housing.com, Fynd, and Chaayos. IIT Bombay graduate with multiple recognitions as a young entrepreneur.",
+    "result": {
+      "summary": "Gagan Goyal is a General Partner at India Quotient with entrepreneur-turned-investor credentials. He founded and successfully exited ThinkLABS, a STEM/robotics ed-tech company in 2016, and has since built an active angel portfolio of 20+ startups including Housing.com, Fynd, and Chaayos. IIT Bombay graduate with multiple recognitions as a young entrepreneur.",
+      "career_signal": {
+        "score": 9,
+        "reasoning": "Strong progression from IIT Bombay (B.Tech Mechanical) to founding ThinkLABS, achieving successful exit in 2016, then transitioning to GP at India Quotient (2017–present). Active angel investor with 20+ portfolio companies and multiple exits demonstrates sustained career momentum in the startup ecosystem."
+      },
+      "founder_relevance": {
+        "score": 10,
+        "reasoning": "Founded ThinkLABS (STEM/robotics ed-tech) and built it to successful exit. Profile emphasizes 'entrepreneur-turned-investor' identity and 'building a category-defining business from scratch.' Winner of Eureka 2004 national business plan competition at IIT Bombay. Active angel investor shows continued founder engagement."
+      },
+      "execution_signal": {
+        "score": 8,
+        "reasoning": "Successfully exited ThinkLABS after building 'IP-driven culture that transformed hands-on learning for students across India.' As angel investor, secured 'multiple high-impact exits' from 20+ portfolio companies. However, specific metrics (revenue, users, scale) and timeline details are absent from profile."
+      },
+      "credibility_signal": {
+        "score": 9,
+        "reasoning": "IIT Bombay graduate, featured in India Today '35 Young Achievers' cover story, Top 10 Young Entrepreneurs (Business World India), Top 25 Young Entrepreneurs in Asia (Business Week USA). Portfolio includes notable startups (Housing.com, Fynd, Chaayos). Involved in FIRST Global robotics Olympics since 2016 and established STEM Education Trust."
+      },
+      "overall_linkedin_fit": 95,
+      "grade": "Strong Yes",
+      "confidence_score": 7,
+      "strengths": [
+        "Proven founder with successful exit of ThinkLABS in ed-tech/STEM space, demonstrating ability to build and scale a business to exit",
+        "Deep India/Bharat insight through ed-tech venture that 'transformed hands-on learning for students across India' and philanthropy focused on underserved backgrounds",
+        "Strong credibility signals: IIT Bombay, multiple national/international entrepreneurship awards, featured in major publications",
+        "Active angel investor track record with 20+ startups and multiple exits, showing deal-sourcing ability and network",
+        "Currently GP at India Quotient (2017-present) with stated focus on pre-seed/seed across consumer hardware, SaaS, fintech, ed-tech"
+      ],
+      "concerns": [
+        "Profile lacks specific metrics about ThinkLABS (revenue, growth rate, team size, number of students impacted, exit details)",
+        "No information about how long ThinkLABS was operated before exit or scale achieved",
+        "Angel investment success rate and exit multiples not quantified - 'multiple high-impact exits' is vague",
+        "Profile is written from investor perspective rather than founder/operator perspective, making it harder to assess depth of operational experience"
+      ],
+      "missing_information": [
+        "ThinkLABS founding year, growth trajectory, revenue/unit economics, team size, and exit valuation/acquirer",
+        "Specific roles/responsibilities between IIT Bombay graduation and ThinkLABS founding",
+        "Details on which angel investments had successful exits and returns generated",
+        "Concrete examples of 'IP-driven culture' and specific innovations/patents at ThinkLABS",
+        "Current fund size, investment thesis details, and portfolio performance at India Quotient"
+      ],
+      "next_questions_for_diligence": [
+        "Walk us through the ThinkLABS journey: when did you found it, what traction did you achieve (revenue, users, schools), and what were the exit terms?",
+        "What was the hardest operational challenge you faced at ThinkLABS and how did you solve it? Can you share specific metrics before/after?",
+        "Of your 20+ angel investments, which 2-3 are you most proud of and why? What was your value-add beyond capital?",
+        "You mention 'frugal innovation' - give us an example from ThinkLABS where resource constraints led to a creative breakthrough.",
+        "What specific founder-market fit or lived experience do you bring that makes you credible in your current investment focus areas (consumer hardware, SaaS, fintech, ed-tech)?"
+      ]
+    },
+    "profile": {
+      "id": 8105351,
+      "urn": "ACoAAAB7rYcBedN3AG_lALs9zV-jUde6E3oDAc0",
+      "username": "gagangoyal",
+      "firstName": "Gagan",
+      "lastName": "Goyal",
+      "isCreator": false,
+      "isPremium": false,
+      "isInfluencer": false,
+      "isOpenToWork": false,
+      "isHiring": false,
+      "followerCount": 31242,
+      "connectionsCount": 30000,
+      "profilePicture": "https://media.licdn.com/dms/image/v2/D5603AQE6WJ6a4qxrMQ/profile-displayphoto-scale_100_100/B56Zx0pK1lIAAg-/0/1771483476457?e=1778112000&v=beta&t=55L_4viYbUYZC7ZvBBMCAOU-1oB8lsm59R4UOje0Ztw",
+      "profilePictures": [
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQE6WJ6a4qxrMQ/profile-displayphoto-crop_800_800/B56Zx0pK1lIAAM-/0/1771483476372?e=1778112000&v=beta&t=u66mW5ADZeh7lXlSerJa_KyMwFZmuOYpQLxvDCqKoJo",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQE6WJ6a4qxrMQ/profile-displayphoto-scale_400_400/B56Zx0pK1lIAAk-/0/1771483476457?e=1778112000&v=beta&t=MRRR48tDrwach7inB8CLb34xyPlEK_H8oEdjdU2-1R0",
+          "width": 400,
+          "height": 400
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQE6WJ6a4qxrMQ/profile-displayphoto-scale_200_200/B56Zx0pK1lIAAc-/0/1771483476457?e=1778112000&v=beta&t=QlEiWxJKyntfVLze7ABHI_OdrI5eSX-ae0gcjSGBgjs",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQE6WJ6a4qxrMQ/profile-displayphoto-scale_100_100/B56Zx0pK1lIAAg-/0/1771483476457?e=1778112000&v=beta&t=55L_4viYbUYZC7ZvBBMCAOU-1oB8lsm59R4UOje0Ztw",
+          "width": 100,
+          "height": 100
+        }
+      ],
+      "backgroundImage": [
+        {
+          "width": 800,
+          "height": 200,
+          "url": "https://media.licdn.com/dms/image/v2/C5616AQEcGrqCTGiNYg/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1516286249715?e=1778112000&v=beta&t=VS3oI2fYE0AkbLVP-gW3UcDE2FDLTNO6UnfkS8ZNeJ0"
+        },
+        {
+          "width": 1024,
+          "height": 256,
+          "url": "https://media.licdn.com/dms/image/v2/C5616AQEcGrqCTGiNYg/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1516286249681?e=1778112000&v=beta&t=rMgnj9spaY9vTLMOnZyp85Vuz4Q5BZGOnQB7WR3vP_k"
+        }
+      ],
+      "summary": "General Partner at India Quotient, where I focus on identifying and scaling early-stage startups that solve deep-rooted problems in India through technology and frugal innovation. As an entrepreneur-turned-investor, I am passionate about supporting founders as a \"buddy\" who understands the roller-coaster journey of building a category-defining business from scratch. \n\nVenture Capital Leadership (2017–Present): I specialise in pre-seed and seed-stage opportunities across consumer hardware, SaaS, fintech, and ed-tech, prioritising product-market fit over vanity metrics.\n\nEntrepreneurial Exit (2016): Successfully exited ThinkLABS, a pioneering STEM and robotics ed-tech company I founded. Built a high-energy, IP-driven culture that transformed hands-on learning for students across India.\n\nStrategic Angel Investing: Active early-stage investor with a portfolio of over 20 startups, including notable names like Housing.com, Fynd, Chaayos, and Zeno Health, securing multiple high-impact exits.\n\nPhilanthropy & STEM Education: Deeply involved in the \"Olympics of Robotics\" via FIRST Global since 2016. Established the STEM Education Trust to mentor talented students from underserved backgrounds, helping them compete and win on the world stage. \n\nI am an IIT Bombay graduate driven by the mission to make the Indian startup ecosystem more efficient, sane, and impactful.",
+      "headline": "Pre-seed & Seed stage Investor",
+      "geo": {
+        "country": "India",
+        "city": "Bengaluru, Karnataka",
+        "full": "Bengaluru, Karnataka, India",
+        "countryCode": "in"
+      },
+      "industry": {
+        "name": "Venture Capital & Private Equity",
+        "urn": "urn:li:fsd_industry:106"
+      },
+      "currentPositions": [
+        {
+          "companyName": "India Quotient",
+          "company": {
+            "id": "9207815",
+            "name": "IndiaQuotient",
+            "url": "https://www.linkedin.com/company/india-quotient/",
+            "logoURL": "https://media.licdn.com/dms/image/v2/C4D0BAQE0m7DT5KGxoA/company-logo_400_400/company-logo_400_400/0/1630499331570/india_quotient_logo?e=1778112000&v=beta&t=aqOEXs9vZ9wixIu4Le-Y0omQVCoi5W2-S4GssddWSDI"
+          }
+        }
+      ],
+      "currentEducation": [
+        {
+          "schoolName": "Indian Institute of Technology, Bombay",
+          "school": {
+            "id": 13496,
+            "urn": "13496",
+            "name": "Indian Institute of Technology, Bombay",
+            "url": "https://www.linkedin.com/school/indian-institute-of-technology-bombay/",
+            "logoURL": "https://media.licdn.com/dms/image/v2/C4D0BAQGmDoDCx_FYpA/company-logo_400_400/company-logo_400_400/0/1660636307357/indian_institute_of_technology_bombay_logo?e=1778112000&v=beta&t=auVBmwz-j15ej7on87trzujMTJoSJ3KYx-ecKSAoixk"
+          },
+          "company": {
+            "id": "157266",
+            "name": "Indian Institute of Technology, Bombay",
+            "url": "https://www.linkedin.com/school/indian-institute-of-technology-bombay/",
+            "logoURL": "https://media.licdn.com/dms/image/v2/C4D0BAQGmDoDCx_FYpA/company-logo_400_400/company-logo_400_400/0/1660636307357/indian_institute_of_technology_bombay_logo?e=1778112000&v=beta&t=auVBmwz-j15ej7on87trzujMTJoSJ3KYx-ecKSAoixk"
+          }
+        }
+      ],
+      "languages": [],
+      "educations": [
+        {
+          "start": {
+            "year": 2000,
+            "month": 8,
+            "day": 0
+          },
+          "end": {
+            "year": 2004,
+            "month": 6,
+            "day": 0
+          },
+          "fieldOfStudy": "Mechanical Engineering",
+          "degree": "B.Tech",
+          "grade": "",
+          "schoolName": "Indian Institute of Technology, Bombay",
+          "description": "",
+          "activities": "",
+          "url": "https://www.linkedin.com/school/indian-institute-of-technology-bombay/",
+          "schoolId": "157266",
+          "logo": [
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4D0BAQGmDoDCx_FYpA/company-logo_200_200/company-logo_200_200/0/1660636307357/indian_institute_of_technology_bombay_logo?e=1778112000&v=beta&t=-XWz70CBisGs1UKNjbpc-srrVivpYY8l7oX2f9p4lqg",
+              "width": 200,
+              "height": 200
+            },
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4D0BAQGmDoDCx_FYpA/company-logo_100_100/company-logo_100_100/0/1660636307357/indian_institute_of_technology_bombay_logo?e=1778112000&v=beta&t=-mKtBlOgFaLZ8s-_pXE4hdkoOs67BnVk3sXPn0NsjSU",
+              "width": 100,
+              "height": 100
+            },
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4D0BAQGmDoDCx_FYpA/company-logo_400_400/company-logo_400_400/0/1660636307357/indian_institute_of_technology_bombay_logo?e=1778112000&v=beta&t=auVBmwz-j15ej7on87trzujMTJoSJ3KYx-ecKSAoixk",
+              "width": 400,
+              "height": 400
+            }
+          ]
+        },
+        {
+          "start": {
+            "year": 1995,
+            "month": 0,
+            "day": 0
+          },
+          "end": {
+            "year": 1997,
+            "month": 0,
+            "day": 0
+          },
+          "fieldOfStudy": "",
+          "degree": "",
+          "grade": "",
+          "schoolName": "St. Anne's School  Jodhpur",
+          "description": "",
+          "activities": "",
+          "url": "https://www.linkedin.com/school/st.-anne%27s-school-jodhpur/",
+          "schoolId": "27077585",
+          "logo": [
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4D0BAQFgvSYpVKd3mw/company-logo_200_200/company-logo_200_200/0/1662921857073/st_annes_school_jodhpur_logo?e=1778112000&v=beta&t=QSmrhD7H7C5Uvc0ASJ0JDt5DPFLiKB1Bz2S4rib8NC0",
+              "width": 200,
+              "height": 200
+            },
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4D0BAQFgvSYpVKd3mw/company-logo_100_100/company-logo_100_100/0/1662921857073/st_annes_school_jodhpur_logo?e=1778112000&v=beta&t=HNfhwZc05yGIibleRtahBKxmO4dGoQ-NYXGkUGay8OI",
+              "width": 100,
+              "height": 100
+            },
+            {
+              "url": "https://media.licdn.com/dms/image/v2/C4D0BAQFgvSYpVKd3mw/company-logo_400_400/company-logo_400_400/0/1662921857073/st_annes_school_jodhpur_logo?e=1778112000&v=beta&t=DroaPFpFoxcUoEJgfpFW278IMlkekB49ejJMdXF9nqc",
+              "width": 400,
+              "height": 400
+            }
+          ]
+        }
+      ],
+      "position": [
+        {
+          "companyId": 9207815,
+          "companyName": "India Quotient",
+          "companyUsername": "india-quotient",
+          "companyURL": "https://www.linkedin.com/company/india-quotient/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQE0m7DT5KGxoA/company-logo_400_400/company-logo_400_400/0/1630499331570/india_quotient_logo?e=1778112000&v=beta&t=aqOEXs9vZ9wixIu4Le-Y0omQVCoi5W2-S4GssddWSDI",
+          "companyIndustry": "Venture Capital & Private Equity",
+          "companyStaffCountRange": "2 - 10",
+          "title": "General Partner",
+          "multiLocaleTitle": {
+            "en_US": "General Partner"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "India Quotient"
+          },
+          "location": "Bengaluru, Karnataka, India",
+          "locationType": "",
+          "description": "",
+          "employmentType": "Full-time",
+          "start": {
+            "year": 2017,
+            "month": 5,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 0,
+          "companyName": "ThinkLABS Technosolutions Pvt. Ltd.",
+          "companyUsername": "",
+          "companyURL": "",
+          "companyLogo": "",
+          "companyIndustry": "",
+          "companyStaffCountRange": "",
+          "title": "Mentor",
+          "multiLocaleTitle": {
+            "en_US": "Mentor"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "ThinkLABS Technosolutions Pvt. Ltd."
+          },
+          "location": "Mumbai, Maharashtra, India",
+          "locationType": "",
+          "description": "",
+          "employmentType": "",
+          "start": {
+            "year": 2016,
+            "month": 6,
+            "day": 0
+          },
+          "end": {
+            "year": 2017,
+            "month": 4,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 0,
+          "companyName": "ThinkLABS Technosolutions Pvt. Ltd.",
+          "companyUsername": "",
+          "companyURL": "",
+          "companyLogo": "",
+          "companyIndustry": "",
+          "companyStaffCountRange": "",
+          "title": "Co-founder & CEO",
+          "multiLocaleTitle": {
+            "en_US": "Co-founder & CEO"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "ThinkLABS Technosolutions Pvt. Ltd."
+          },
+          "location": "mumbai",
+          "locationType": "",
+          "description": "Founded ThinkLABS in 2006 with the objective of \"promoting hands-on learning & STEM education\" so that learning process can be much for engaging and effective which is predominantly a rote-based learning since long. \n\nI have been through the roller-coaster journey of conceiving the idea to creating a new business category in Indian education market. Have seen challenges of product market fit to sales to raising capital. \n\nFinally built a sustainable company, got a cash exit by selling it to strategic players. This would not have been possible without our highly motivated team, early stage investors and supporters who always believed in us.",
+          "employmentType": "Full-time",
+          "start": {
+            "year": 2006,
+            "month": 10,
+            "day": 0
+          },
+          "end": {
+            "year": 2016,
+            "month": 6,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 0,
+          "companyName": "Hindustan Petroleum Corporation Ltd",
+          "companyUsername": "",
+          "companyURL": "",
+          "companyLogo": "",
+          "companyIndustry": "",
+          "companyStaffCountRange": "",
+          "title": "Engineer",
+          "multiLocaleTitle": {
+            "en_US": "Engineer"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Hindustan Petroleum Corporation Ltd"
+          },
+          "location": "",
+          "locationType": "",
+          "description": "",
+          "employmentType": "",
+          "start": {
+            "year": 2004,
+            "month": 6,
+            "day": 0
+          },
+          "end": {
+            "year": 2005,
+            "month": 11,
+            "day": 0
+          }
+        }
+      ],
+      "fullPositions": [
+        {
+          "companyId": 9207815,
+          "companyName": "India Quotient",
+          "companyUsername": "india-quotient",
+          "companyURL": "https://www.linkedin.com/company/india-quotient/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQE0m7DT5KGxoA/company-logo_400_400/company-logo_400_400/0/1630499331570/india_quotient_logo?e=1778112000&v=beta&t=aqOEXs9vZ9wixIu4Le-Y0omQVCoi5W2-S4GssddWSDI",
+          "companyIndustry": "Venture Capital & Private Equity",
+          "companyStaffCountRange": "2 - 10",
+          "title": "General Partner",
+          "multiLocaleTitle": {
+            "en_US": "General Partner"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "India Quotient"
+          },
+          "location": "Bengaluru, Karnataka, India",
+          "locationType": "",
+          "description": "",
+          "employmentType": "Full-time",
+          "start": {
+            "year": 2017,
+            "month": 5,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 0,
+          "companyName": "ThinkLABS Technosolutions Pvt. Ltd.",
+          "companyUsername": "",
+          "companyURL": "",
+          "companyLogo": "",
+          "companyIndustry": "",
+          "companyStaffCountRange": "",
+          "title": "Mentor",
+          "multiLocaleTitle": {
+            "en_US": "Mentor"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "ThinkLABS Technosolutions Pvt. Ltd."
+          },
+          "location": "Mumbai, Maharashtra, India",
+          "locationType": "",
+          "description": "",
+          "employmentType": "",
+          "start": {
+            "year": 2016,
+            "month": 6,
+            "day": 0
+          },
+          "end": {
+            "year": 2017,
+            "month": 4,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 0,
+          "companyName": "ThinkLABS Technosolutions Pvt. Ltd.",
+          "companyUsername": "",
+          "companyURL": "",
+          "companyLogo": "",
+          "companyIndustry": "",
+          "companyStaffCountRange": "",
+          "title": "Co-founder & CEO",
+          "multiLocaleTitle": {
+            "en_US": "Co-founder & CEO"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "ThinkLABS Technosolutions Pvt. Ltd."
+          },
+          "location": "mumbai",
+          "locationType": "",
+          "description": "Founded ThinkLABS in 2006 with the objective of \"promoting hands-on learning & STEM education\" so that learning process can be much for engaging and effective which is predominantly a rote-based learning since long. \n\nI have been through the roller-coaster journey of conceiving the idea to creating a new business category in Indian education market. Have seen challenges of product market fit to sales to raising capital. \n\nFinally built a sustainable company, got a cash exit by selling it to strategic players. This would not have been possible without our highly motivated team, early stage investors and supporters who always believed in us.",
+          "employmentType": "Full-time",
+          "start": {
+            "year": 2006,
+            "month": 10,
+            "day": 0
+          },
+          "end": {
+            "year": 2016,
+            "month": 6,
+            "day": 0
+          }
+        },
+        {
+          "companyId": 0,
+          "companyName": "Hindustan Petroleum Corporation Ltd",
+          "companyUsername": "",
+          "companyURL": "",
+          "companyLogo": "",
+          "companyIndustry": "",
+          "companyStaffCountRange": "",
+          "title": "Engineer",
+          "multiLocaleTitle": {
+            "en_US": "Engineer"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "Hindustan Petroleum Corporation Ltd"
+          },
+          "location": "",
+          "locationType": "",
+          "description": "",
+          "employmentType": "",
+          "start": {
+            "year": 2004,
+            "month": 6,
+            "day": 0
+          },
+          "end": {
+            "year": 2005,
+            "month": 11,
+            "day": 0
+          }
+        }
+      ],
+      "skills": [
+        {
+          "name": "Operational Excellence",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Engineering",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Business Development",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Entrepreneurship",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Product Development",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Manufacturing",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Robotics",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Program Management",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Cross-functional Team Leadership",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Embedded Systems",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Analytics",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Start-ups",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "New Business Development",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Training",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Team Management",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Strategy",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Business Strategy",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Market Research",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Operations Management",
+          "passedSkillAssessment": false
+        },
+        {
+          "name": "Competitive Analysis",
+          "passedSkillAssessment": false
+        }
+      ],
+      "courses": [],
+      "certifications": [],
+      "projects": [],
+      "publications": [],
+      "volunteering": [
+        {
+          "title": "Lead India's participation in FIRST GLOBAL (Olympics of Robotics games)",
+          "multiLocaleTitle": {
+            "en_US": "Lead India's participation in FIRST GLOBAL (Olympics of Robotics games)"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "FIRST Global"
+          },
+          "multiLocaleDescription": {
+            "en_US": "FIRST Global (www.first.global) - The Olympics of Robotics - A new initiative by Dean Kamen (Inventor of Segway and founder of FIRST) - to foster the interest and recognition of STEM (Science, Technology, Engineering, and Mathematics) skills among young students. It's a Global championship that combines the excitement of sports with the rigour of science and technology."
+          },
+          "start": {
+            "year": 2016,
+            "month": 11,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "cause": "SCIENCE_AND_TECHNOLOGY",
+          "description": "FIRST Global (www.first.global) - The Olympics of Robotics - A new initiative by Dean Kamen (Inventor of Segway and founder of FIRST) - to foster the interest and recognition of STEM (Science, Technology, Engineering, and Mathematics) skills among young students. It's a Global championship that combines the excitement of sports with the rigour of science and technology.",
+          "companyName": "FIRST Global",
+          "CompanyId": "11557757",
+          "companyUrl": "https://www.linkedin.com/company/f1rst-global/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQGVRW_XtNdjaA/company-logo_400_400/company-logo_400_400/0/1660058042693/f1rst_global_logo?e=1778112000&v=beta&t=rvY0NPGp3K3kqHKMuibpwF_fL8hywyDqeNTgXfcZ3IA"
+        },
+        {
+          "title": "Trustee",
+          "multiLocaleTitle": {
+            "en_US": "Trustee"
+          },
+          "multiLocaleCompanyName": {
+            "en_US": "STEM Education Trust"
+          },
+          "multiLocaleDescription": {
+            "en_US": "\"Co-founder of STEM Education Trust, a non-profit dedicated to making robotics 'the next great equalizer' in Indian education. As the official India partner for FIRST Global since 2017, we identify and mentor talented students from underserved backgrounds, empowering them to represent India on the world stage of innovation. Our mission is to bridge the gap between classroom theory and real-world problem solving through hands-on STEM experiences.\""
+          },
+          "start": {
+            "year": 2018,
+            "month": 6,
+            "day": 0
+          },
+          "end": {
+            "year": 0,
+            "month": 0,
+            "day": 0
+          },
+          "cause": "SCIENCE_AND_TECHNOLOGY",
+          "description": "\"Co-founder of STEM Education Trust, a non-profit dedicated to making robotics 'the next great equalizer' in Indian education. As the official India partner for FIRST Global since 2017, we identify and mentor talented students from underserved backgrounds, empowering them to represent India on the world stage of innovation. Our mission is to bridge the gap between classroom theory and real-world problem solving through hands-on STEM experiences.\"",
+          "companyName": "STEM Education Trust",
+          "CompanyId": "108457538",
+          "companyUrl": "https://www.linkedin.com/company/stem-edu-trust/",
+          "companyLogo": "https://media.licdn.com/dms/image/v2/D560BAQFHuTJiVtOIHw/company-logo_400_400/B56ZqbGhcuJ4AY-/0/1763538770211/fgc_team_india_logo?e=1778112000&v=beta&t=0Brk7nxPdh9CWBfRa3bZM6TQInBw-OUakeJE9GQ2zfA"
+        }
+      ],
+      "organizations": [],
+      "patents": [],
+      "honorsAndAwards": [
+        {
+          "title": "Featured among 51 New Millennium Education Entrepreneurs",
+          "multiLocaleTitle": {
+            "en_US": "Featured among 51 New Millennium Education Entrepreneurs"
+          },
+          "issuer": "Education World",
+          "multiLocaleIssuer": {
+            "en_US": "Education World"
+          },
+          "issuedOn": {
+            "year": 2013,
+            "month": 11,
+            "day": 0
+          }
+        },
+        {
+          "title": "Featured on cover page of India Today \" 35 Young Achievers\"",
+          "multiLocaleTitle": {
+            "en_US": "Featured on cover page of India Today \" 35 Young Achievers\""
+          },
+          "issuer": "India Today",
+          "multiLocaleIssuer": {
+            "en_US": "India Today"
+          },
+          "issuedOn": {
+            "year": 2010,
+            "month": 10,
+            "day": 0
+          }
+        },
+        {
+          "title": "Top 10 Young Entreprenuers in India (Jury's Choice)",
+          "multiLocaleTitle": {
+            "en_US": "Top 10 Young Entreprenuers in India (Jury's Choice)"
+          },
+          "issuer": "Business World, India",
+          "multiLocaleIssuer": {
+            "en_US": "Business World, India"
+          },
+          "issuedOn": {
+            "year": 2010,
+            "month": 3,
+            "day": 0
+          }
+        },
+        {
+          "title": "Top 25 Young Entreprenuer's in ASIA",
+          "multiLocaleTitle": {
+            "en_US": "Top 25 Young Entreprenuer's in ASIA"
+          },
+          "issuer": "Business Week, USA",
+          "multiLocaleIssuer": {
+            "en_US": "Business Week, USA"
+          },
+          "issuedOn": {
+            "year": 2007,
+            "month": 12,
+            "day": 0
+          }
+        },
+        {
+          "title": "Winner of Eureka 2004",
+          "multiLocaleTitle": {
+            "en_US": "Winner of Eureka 2004"
+          },
+          "issuer": "National Level Business Plan competion organized by IIT Bombay",
+          "multiLocaleIssuer": {
+            "en_US": "National Level Business Plan competion organized by IIT Bombay"
+          },
+          "issuedOn": {
+            "year": 2004,
+            "month": 3,
+            "day": 0
+          }
+        },
+        {
+          "title": "Winner of reigon 13 (Rest of world outside America) for ASME Design Contest",
+          "multiLocaleTitle": {
+            "en_US": "Winner of reigon 13 (Rest of world outside America) for ASME Design Contest"
+          },
+          "issuer": "American Society of Mechancial Engineers",
+          "multiLocaleIssuer": {
+            "en_US": "American Society of Mechancial Engineers"
+          },
+          "issuedOn": {
+            "year": 2003,
+            "month": 1,
+            "day": 0
+          }
+        }
+      ],
+      "supportedLocales": [
+        {
+          "country": "US",
+          "language": "en"
+        }
+      ],
+      "multiLocaleFirstName": {
+        "en_US": "Gagan"
+      },
+      "multiLocaleLastName": {
+        "en_US": "Goyal"
+      },
+      "multiLocaleHeadline": {
+        "en_US": "Pre-seed & Seed stage Investor"
+      },
+      "_provider": "linkdapi",
+      "_scrape_url": "https://www.linkedin.com/in/gagangoyal/",
+      "_username": "gagangoyal"
+    }
+  }
+]
