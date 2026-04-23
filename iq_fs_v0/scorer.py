@@ -59,6 +59,14 @@ Bonus (+2): If the person has gone through any Indian or global accelerator (Y C
 Surge, Sequoia Arc, 100X.VC, etc.).
 Bonus (+1): If they have had a documented exit, acqui-hire, or shipped something with real traction.
 
+SPECIAL SIGNAL — Ex-VC or Ex-Consultant turned founder: A person who worked at a VC fund \
+(any level — analyst, associate, VP, partner) or top-tier consulting firm (MBB, Big 4 strategy) \
+and then LEFT to build their own startup is an exceptionally strong signal. This is standard \
+industry practice: VCs and consultants who choose to build are considered near-equivalent to \
+second-time founders. Score them at 20+ pts in this dimension if they have made this transition, \
+even if the startup is early-stage. The act of leaving a high-status, high-paying role to build \
+is itself the signal.
+
 2. EDUCATIONAL PEDIGREE (20 pts)
 IQ recognizes that elite Indian institutions are extraordinarily competitive filters.
 - 18–20 pts: IIT (any campus) / IIM (A/B/C/L/K/I) / BITS Pilani / SRCC (Economics Hons) / \
@@ -87,23 +95,22 @@ Tier-1 PE (KKR, Warburg, Carlyle India), Big 4 strategy, Tier-2 MBB, Bloomberg, 
 - 0–2 pts: No recognizable employer brand or self-employed without verifiable traction.
 
 4. TRAJECTORY & PROGRESSION (10 pts)
-Evaluate the arc of their career using the explicit start/end dates provided. Do not guess — use \
-the actual dates to calculate how fast they moved between levels.
-- 9–10 pts: Clear upward trajectory with each role more senior than the last. Compressed timelines \
-are a strong positive signal — e.g., reaching VP/Director/Head-of within 3–4 years of graduating, \
-or making Partner/C-suite before age 30. Has taken non-obvious risks (left a high-paying role to \
-build, joined an early startup over a FAANG offer, moved across industries deliberately).
-- 6–8 pts: Mostly upward with strategic lateral moves that make sense in hindsight. Good progression \
-but no defining accelerated moment or risk taken.
-- 3–5 pts: Flat or unclear progression. Multiple lateral moves without a narrative. Average tenure \
-and seniority growth.
-- 0–2 pts: Declining trajectory, unexplained multi-year gaps, or frequent short stints (under 1 year \
-each) with no startup context.
+Score based primarily on the TITLE SENIORITY achieved and the overall career arc — not on date \
+arithmetic. Ask: how senior and high-signal are the titles this person has held?
 
-IMPORTANT for trajectory scoring: fast promotion is a strong positive signal. If someone reached \
-a senior/leadership title significantly faster than the industry norm (e.g., VP at 26, Director at \
-24, Partner at 28), explicitly note it and score toward the top of the range. Use the date fields \
-in the profile to calculate tenure at each role precisely.
+- 9–10 pts: Has held or currently holds a C-suite title (CEO, CTO, CPO, CFO, COO), Founder, \
+Managing Director, Partner, or equivalent top-tier title. OR has a clear step-function jump — \
+e.g., IC → Team Lead → Head of → VP within a compressed timeline. Taking a big risk (leaving \
+a cushy role to build, joining a 5-person startup) also scores here.
+- 6–8 pts: Has reached VP, Director, Head of, or Senior Manager level. Solid upward arc with \
+titles that reflect growing scope and responsibility. Some risk-taking visible.
+- 3–5 pts: Mostly mid-level titles (Senior, Lead, Manager) with modest upward movement. Functional \
+but not exceptional arc.
+- 0–2 pts: Primarily junior or flat titles (Analyst, Associate, Executive) with no clear upward \
+movement, or unexplained gaps.
+
+NOTE: Do not penalize short stints if the person was at a startup that shut down or was acquired. \
+The TITLE and SCOPE matter far more than years spent.
 
 5. DOMAIN DEPTH & SECTOR RELEVANCE (10 pts)
 - 9–10 pts: Deep expertise in a high-potential sector IQ cares about (fintech, D2C, edtech, \

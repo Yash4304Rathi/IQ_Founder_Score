@@ -395,40 +395,56 @@ def _looks_like_profile(item: dict) -> bool:
     return any(item.get(f) for f in profile_fields)
 
 
-def _parse_year_month(date_obj) -> tuple[int | None, int | None]:
-    """Extract (year, month) from a LinkedIn date dict or return (None, None)."""
-    if not isinstance(date_obj, dict):
-        return None, None
-    return date_obj.get("year"), date_obj.get("month")
+_NOISE_KEYS = {
+    "profilePicture", "backgroundImage", "img_400_400", "img_200_200",
+    "photo", "avatar", "pictureUrl", "profilePictureUrl", "backgroundCoverImage",
+    "publicProfileUrl", "memberUrn", "entityUrn", "dashEntityUrn", "objectUrn",
+    "trackingId", "versionTag", "paging", "metadata", "$anti_abuse_metadata",
+}
+
+_SKIP_URL_PREFIXES = ("https://media.licdn", "https://static.licdn", "data:image")
 
 
-def _format_date(date_obj) -> str:
-    if not isinstance(date_obj, dict):
+def _clean_value(val):
+    """Recursively strip noise from a scraped profile value."""
+    if isinstance(val, dict):
+        return {
+            k: _clean_value(v)
+            for k, v in val.items()
+            if k not in _NOISE_KEYS and v not in (None, "", [], {})
+        }
+    if isinstance(val, list):
+        cleaned = [_clean_value(i) for i in val]
+        return [i for i in cleaned if i not in (None, "", [], {})]
+    if isinstance(val, str):
+        if any(val.startswith(p) for p in _SKIP_URL_PREFIXES):
+            return None
+        return val
+    return val
+
+
+def _fmt_date(d) -> str:
+    if not isinstance(d, dict):
         return ""
-    year  = date_obj.get("year")
-    month = date_obj.get("month")
-    if year and month:
-        import calendar
-        return f"{calendar.month_abbr[month]} {year}"
-    if year:
-        return str(year)
-    return ""
+    import calendar
+    y, m = d.get("year"), d.get("month")
+    if y and m:
+        return f"{calendar.month_abbr[m]} {y}"
+    return str(y) if y else ""
 
 
 def _exp_sort_key(exp: dict) -> tuple:
-    """Sort key for experience: (start_year, start_month) descending → most recent first."""
     tp = exp.get("timePeriod") or {}
     sd = tp.get("startDate") or exp.get("startDate") or {}
-    year  = sd.get("year")  or 0
-    month = sd.get("month") or 0
-    return (year, month)
+    return (sd.get("year") or 0, sd.get("month") or 0)
 
 
-def summarize_profile_for_prompt(profile: dict, max_chars: int = 8000) -> str:
-    """Produce a detailed human-readable view of a LinkedIn profile for LLM scoring.
+def summarize_profile_for_prompt(profile: dict, max_chars: int = 10000) -> str:
+    """Convert a raw scraped profile into high-fidelity text for the LLM.
 
-    Preserves explicit start/end dates and seniority signals so the model can
-    reason about career trajectory, promotion speed, and risk-taking.
+    Strategy: strip all noise (images, URLs, tracking IDs) then render every
+    meaningful field so Claude gets the full picture — especially experience
+    titles, dates, descriptions, education, recommendations, and activity.
     """
     if not profile:
         return "(no profile data available)"
@@ -436,109 +452,142 @@ def summarize_profile_for_prompt(profile: dict, max_chars: int = 8000) -> str:
         return f"(profile scrape failed: {profile['_scrape_error']})"
 
     lines: list[str] = []
-    name = (
-        profile.get("fullName")
-        or profile.get("name")
-        or f"{profile.get('firstName','')} {profile.get('lastName','')}".strip()
-    )
-    if name:
-        lines.append(f"Name: {name}")
-    if profile.get("headline"):
-        lines.append(f"Headline: {profile['headline']}")
-    location = profile.get("addressWithCountry") or profile.get("location")
-    if location:
-        lines.append(f"Location: {location}")
-    about = profile.get("about") or profile.get("summary")
-    if about:
-        lines.append(f"About: {str(about)[:1500]}")
 
-    experiences = profile.get("experiences") or profile.get("experience") or []
-    if experiences:
-        # Sort most-recent first so the trajectory reads naturally top-down
+    # ── Identity ──────────────────────────────────────────────────────────────
+    name = (
+        profile.get("fullName") or profile.get("name")
+        or f"{profile.get('firstName', '')} {profile.get('lastName', '')}".strip()
+    )
+    if name:   lines.append(f"Name: {name}")
+    if profile.get("headline"):  lines.append(f"Headline: {profile['headline']}")
+    loc = profile.get("addressWithCountry") or profile.get("location") or profile.get("geoLocationName")
+    if loc:    lines.append(f"Location: {loc}")
+    about = profile.get("about") or profile.get("summary")
+    if about:  lines.append(f"\nAbout:\n{str(about)[:2000]}")
+
+    followers   = profile.get("followers") or profile.get("followerCount")
+    connections = profile.get("connections") or profile.get("connectionsCount")
+    if followers:   lines.append(f"Followers: {followers}")
+    if connections: lines.append(f"Connections: {connections}")
+
+    # ── Experience ────────────────────────────────────────────────────────────
+    exps = profile.get("experiences") or profile.get("experience") or []
+    if exps:
         try:
-            experiences = sorted(experiences, key=_exp_sort_key, reverse=True)
+            exps = sorted(exps, key=_exp_sort_key, reverse=True)
         except Exception:
             pass
-
-        lines.append("")
-        lines.append("Experience (most recent first — use dates to assess progression speed):")
-        for exp in experiences:
+        lines.append("\nExperience:")
+        for exp in exps:
             title   = exp.get("title") or exp.get("position") or ""
             company = exp.get("companyName") or exp.get("company") or ""
-            emp_count = exp.get("companyStaffCountRange") or exp.get("staffCount") or ""
+            tp      = exp.get("timePeriod") or {}
+            start   = _fmt_date(tp.get("startDate") or exp.get("startDate"))
+            end     = _fmt_date(tp.get("endDate")   or exp.get("endDate")) or "Present"
+            dur     = exp.get("duration") or exp.get("dateRange") or ""
+            size    = exp.get("companyStaffCountRange") or exp.get("employeeCount") or ""
+            loc_exp = exp.get("locationName") or exp.get("location") or ""
 
-            # Pull dates from timePeriod (LinkdAPI) or flat fields (Apify)
-            tp = exp.get("timePeriod") or {}
-            raw_start = tp.get("startDate") or exp.get("startDate") or {}
-            raw_end   = tp.get("endDate")   or exp.get("endDate")   or {}
+            date_str = f"{start} – {end}" if start else end
+            if dur: date_str += f" ({dur})"
 
-            start_str = _format_date(raw_start)
-            end_str   = _format_date(raw_end) or "Present"
-            duration  = exp.get("duration") or exp.get("dateRange") or ""
-
-            date_part = ""
-            if start_str:
-                date_part = f"{start_str} – {end_str}"
-                if duration:
-                    date_part += f"  [{duration}]"
-            elif duration:
-                date_part = duration
-
-            header = f"  - {title} at {company}"
-            if date_part:
-                header += f"  |  {date_part}"
-            if emp_count:
-                header += f"  |  Company size: {emp_count}"
-            lines.append(header)
-
-            desc = (exp.get("description") or "")[:400]
-            if desc:
-                lines.append(f"      {desc}")
-
-    education = profile.get("educations") or profile.get("education") or []
-    if education:
-        lines.append("")
-        lines.append("Education:")
-        for edu in education[:5]:
-            school = edu.get("schoolName") or edu.get("school") or ""
-            degree = edu.get("degree") or edu.get("degreeName") or ""
-            field = edu.get("fieldOfStudy") or ""
-            dates = edu.get("dateRange") or edu.get("duration") or ""
-            parts = [p for p in [degree, field] if p]
-            detail = ", ".join(parts)
-            line = f"  - {school}"
-            if detail:
-                line += f" — {detail}"
-            if dates:
-                line += f" ({dates})"
+            line = f"  [{date_str}]  {title}  @  {company}"
+            if size:    line += f"  |  size: {size}"
+            if loc_exp: line += f"  |  {loc_exp}"
             lines.append(line)
 
+            desc = (exp.get("description") or "")[:600]
+            if desc:
+                lines.append(f"    {desc.strip()}")
+
+    # ── Education ─────────────────────────────────────────────────────────────
+    edus = profile.get("educations") or profile.get("education") or []
+    if edus:
+        lines.append("\nEducation:")
+        for edu in edus:
+            school = edu.get("schoolName") or edu.get("school") or ""
+            degree = edu.get("degree") or edu.get("degreeName") or ""
+            field  = edu.get("fieldOfStudy") or ""
+            tp     = edu.get("timePeriod") or {}
+            start  = _fmt_date(tp.get("startDate") or edu.get("startDate"))
+            end    = _fmt_date(tp.get("endDate")   or edu.get("endDate"))
+            dates  = f"{start}–{end}" if start and end else edu.get("dateRange") or edu.get("duration") or ""
+            detail = ", ".join(p for p in [degree, field] if p)
+            line   = f"  {school}"
+            if detail: line += f" — {detail}"
+            if dates:  line += f" ({dates})"
+            lines.append(line)
+            activities = edu.get("activities") or edu.get("description") or ""
+            if activities:
+                lines.append(f"    Activities: {str(activities)[:300]}")
+
+    # ── Certifications ────────────────────────────────────────────────────────
+    certs = profile.get("certifications") or profile.get("licenseAndCertificates") or []
+    if certs:
+        lines.append("\nCertifications:")
+        for c in certs[:8]:
+            name_c  = c.get("name") or c.get("title") or ""
+            issuer  = c.get("authority") or c.get("issuer") or ""
+            lines.append(f"  {name_c}" + (f" — {issuer}" if issuer else ""))
+
+    # ── Honors & Awards ───────────────────────────────────────────────────────
     honors = profile.get("honors") or profile.get("honorsAndAwards") or []
     if honors:
-        lines.append("")
-        lines.append("Honors / Awards:")
-        for h in honors[:5]:
-            title = h.get("title") or h.get("name") or ""
-            issuer = h.get("issuer") or ""
-            lines.append(f"  - {title} ({issuer})" if issuer else f"  - {title}")
+        lines.append("\nHonors / Awards:")
+        for h in honors[:8]:
+            t = h.get("title") or h.get("name") or ""
+            i = h.get("issuer") or ""
+            lines.append(f"  {t}" + (f" — {i}" if i else ""))
 
-    certifications = profile.get("certifications") or profile.get("licenseAndCertificates") or []
-    if certifications:
-        lines.append("")
-        lines.append("Certifications:")
-        for c in certifications[:5]:
-            title = c.get("title") or c.get("name") or ""
-            issuer = c.get("issuer") or ""
-            lines.append(f"  - {title} ({issuer})" if issuer else f"  - {title}")
+    # ── Publications / Patents ────────────────────────────────────────────────
+    pubs = profile.get("publications") or []
+    if pubs:
+        lines.append("\nPublications:")
+        for p in pubs[:5]:
+            lines.append(f"  {p.get('name') or p.get('title') or ''}")
 
-    followers = profile.get("followers") or profile.get("followerCount")
-    connections = profile.get("connections") or profile.get("connectionsCount")
-    if followers or connections:
-        lines.append("")
-        if followers:
-            lines.append(f"Followers: {followers}")
-        if connections:
-            lines.append(f"Connections: {connections}")
+    patents = profile.get("patents") or []
+    if patents:
+        lines.append("\nPatents:")
+        for p in patents[:5]:
+            lines.append(f"  {p.get('title') or p.get('name') or ''}")
+
+    # ── Volunteer / Causes ────────────────────────────────────────────────────
+    vol = profile.get("volunteer") or profile.get("volunteerExperiences") or []
+    if vol:
+        lines.append("\nVolunteer:")
+        for v in vol[:4]:
+            role = v.get("role") or v.get("title") or ""
+            org  = v.get("companyName") or v.get("organization") or ""
+            lines.append(f"  {role} @ {org}".strip(" @"))
+
+    # ── Skills ────────────────────────────────────────────────────────────────
+    skills = profile.get("skills") or []
+    if skills:
+        skill_names = []
+        for s in skills[:20]:
+            n = s.get("name") if isinstance(s, dict) else str(s)
+            if n: skill_names.append(n)
+        if skill_names:
+            lines.append(f"\nSkills: {', '.join(skill_names)}")
+
+    # ── Recommendations ───────────────────────────────────────────────────────
+    recs = profile.get("recommendations") or profile.get("receivedRecommendations") or []
+    if recs:
+        lines.append("\nRecommendations received:")
+        for r in recs[:4]:
+            rec_text  = r.get("caption") or r.get("description") or r.get("text") or ""
+            rec_from  = r.get("authorFullName") or r.get("recommenderName") or r.get("name") or ""
+            rec_title = r.get("authorTitle") or r.get("recommenderTitle") or ""
+            if rec_text:
+                lines.append(f"  From {rec_from}" + (f" ({rec_title})" if rec_title else "") + ":")
+                lines.append(f"    \"{str(rec_text)[:400]}\"")
+
+    # ── Languages ─────────────────────────────────────────────────────────────
+    langs = profile.get("languages") or []
+    if langs:
+        lang_names = [l.get("name") if isinstance(l, dict) else str(l) for l in langs]
+        lines.append(f"\nLanguages: {', '.join(l for l in lang_names if l)}")
 
     text = "\n".join(lines)
     if len(text) > max_chars:
