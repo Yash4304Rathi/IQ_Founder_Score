@@ -87,13 +87,23 @@ Tier-1 PE (KKR, Warburg, Carlyle India), Big 4 strategy, Tier-2 MBB, Bloomberg, 
 - 0–2 pts: No recognizable employer brand or self-employed without verifiable traction.
 
 4. TRAJECTORY & PROGRESSION (10 pts)
-Evaluate the arc of their career, not just the labels.
-- 9–10 pts: Clear upward trajectory, each role more senior or higher-signal than the last. \
-Compressed timelines (more impact per year). Has taken non-obvious risks (left a high-paying role \
-to build, joined an early startup over a FAANG offer).
-- 6–8 pts: Mostly upward with strategic lateral moves. Good progression but no defining risk moment.
-- 3–5 pts: Flat or unclear progression. Lots of short stints without a narrative.
-- 0–2 pts: Declining trajectory or unexplained gaps.
+Evaluate the arc of their career using the explicit start/end dates provided. Do not guess — use \
+the actual dates to calculate how fast they moved between levels.
+- 9–10 pts: Clear upward trajectory with each role more senior than the last. Compressed timelines \
+are a strong positive signal — e.g., reaching VP/Director/Head-of within 3–4 years of graduating, \
+or making Partner/C-suite before age 30. Has taken non-obvious risks (left a high-paying role to \
+build, joined an early startup over a FAANG offer, moved across industries deliberately).
+- 6–8 pts: Mostly upward with strategic lateral moves that make sense in hindsight. Good progression \
+but no defining accelerated moment or risk taken.
+- 3–5 pts: Flat or unclear progression. Multiple lateral moves without a narrative. Average tenure \
+and seniority growth.
+- 0–2 pts: Declining trajectory, unexplained multi-year gaps, or frequent short stints (under 1 year \
+each) with no startup context.
+
+IMPORTANT for trajectory scoring: fast promotion is a strong positive signal. If someone reached \
+a senior/leadership title significantly faster than the industry norm (e.g., VP at 26, Director at \
+24, Partner at 28), explicitly note it and score toward the top of the range. Use the date fields \
+in the profile to calculate tenure at each role precisely.
 
 5. DOMAIN DEPTH & SECTOR RELEVANCE (10 pts)
 - 9–10 pts: Deep expertise in a high-potential sector IQ cares about (fintech, D2C, edtech, \

@@ -395,8 +395,41 @@ def _looks_like_profile(item: dict) -> bool:
     return any(item.get(f) for f in profile_fields)
 
 
-def summarize_profile_for_prompt(profile: dict, max_chars: int = 6000) -> str:
-    """Produce a compact human-readable view of a LinkedIn profile for LLM input."""
+def _parse_year_month(date_obj) -> tuple[int | None, int | None]:
+    """Extract (year, month) from a LinkedIn date dict or return (None, None)."""
+    if not isinstance(date_obj, dict):
+        return None, None
+    return date_obj.get("year"), date_obj.get("month")
+
+
+def _format_date(date_obj) -> str:
+    if not isinstance(date_obj, dict):
+        return ""
+    year  = date_obj.get("year")
+    month = date_obj.get("month")
+    if year and month:
+        import calendar
+        return f"{calendar.month_abbr[month]} {year}"
+    if year:
+        return str(year)
+    return ""
+
+
+def _exp_sort_key(exp: dict) -> tuple:
+    """Sort key for experience: (start_year, start_month) descending → most recent first."""
+    tp = exp.get("timePeriod") or {}
+    sd = tp.get("startDate") or exp.get("startDate") or {}
+    year  = sd.get("year")  or 0
+    month = sd.get("month") or 0
+    return (year, month)
+
+
+def summarize_profile_for_prompt(profile: dict, max_chars: int = 8000) -> str:
+    """Produce a detailed human-readable view of a LinkedIn profile for LLM scoring.
+
+    Preserves explicit start/end dates and seniority signals so the model can
+    reason about career trajectory, promotion speed, and risk-taking.
+    """
     if not profile:
         return "(no profile data available)"
     if profile.get("_scrape_error"):
@@ -417,21 +450,48 @@ def summarize_profile_for_prompt(profile: dict, max_chars: int = 6000) -> str:
         lines.append(f"Location: {location}")
     about = profile.get("about") or profile.get("summary")
     if about:
-        lines.append(f"About: {str(about)[:1200]}")
+        lines.append(f"About: {str(about)[:1500]}")
 
     experiences = profile.get("experiences") or profile.get("experience") or []
     if experiences:
+        # Sort most-recent first so the trajectory reads naturally top-down
+        try:
+            experiences = sorted(experiences, key=_exp_sort_key, reverse=True)
+        except Exception:
+            pass
+
         lines.append("")
-        lines.append("Experience:")
-        for exp in experiences[:8]:
-            title = exp.get("title") or exp.get("position") or ""
+        lines.append("Experience (most recent first — use dates to assess progression speed):")
+        for exp in experiences:
+            title   = exp.get("title") or exp.get("position") or ""
             company = exp.get("companyName") or exp.get("company") or ""
-            duration = exp.get("duration") or exp.get("dateRange") or ""
-            desc = (exp.get("description") or "")[:300]
-            header = f"  - {title} at {company}".rstrip()
-            if duration:
-                header += f" ({duration})"
+            emp_count = exp.get("companyStaffCountRange") or exp.get("staffCount") or ""
+
+            # Pull dates from timePeriod (LinkdAPI) or flat fields (Apify)
+            tp = exp.get("timePeriod") or {}
+            raw_start = tp.get("startDate") or exp.get("startDate") or {}
+            raw_end   = tp.get("endDate")   or exp.get("endDate")   or {}
+
+            start_str = _format_date(raw_start)
+            end_str   = _format_date(raw_end) or "Present"
+            duration  = exp.get("duration") or exp.get("dateRange") or ""
+
+            date_part = ""
+            if start_str:
+                date_part = f"{start_str} – {end_str}"
+                if duration:
+                    date_part += f"  [{duration}]"
+            elif duration:
+                date_part = duration
+
+            header = f"  - {title} at {company}"
+            if date_part:
+                header += f"  |  {date_part}"
+            if emp_count:
+                header += f"  |  Company size: {emp_count}"
             lines.append(header)
+
+            desc = (exp.get("description") or "")[:400]
             if desc:
                 lines.append(f"      {desc}")
 
