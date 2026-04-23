@@ -435,7 +435,12 @@ def _fmt_date(d) -> str:
 
 def _exp_sort_key(exp: dict) -> tuple:
     tp = exp.get("timePeriod") or {}
-    sd = tp.get("startDate") or exp.get("startDate") or {}
+    sd = (
+        tp.get("startDate")
+        or exp.get("startDate")
+        or exp.get("start")
+        or {}
+    )
     return (sd.get("year") or 0, sd.get("month") or 0)
 
 
@@ -471,7 +476,14 @@ def summarize_profile_for_prompt(profile: dict, max_chars: int = 10000) -> str:
     if connections: lines.append(f"Connections: {connections}")
 
     # ── Experience ────────────────────────────────────────────────────────────
-    exps = profile.get("experiences") or profile.get("experience") or []
+    # LinkdAPI uses fullPositions; Apify uses experiences/experience
+    exps = (
+        profile.get("fullPositions")
+        or profile.get("experiences")
+        or profile.get("experience")
+        or profile.get("position")
+        or []
+    )
     if exps:
         try:
             exps = sorted(exps, key=_exp_sort_key, reverse=True)
@@ -482,8 +494,8 @@ def summarize_profile_for_prompt(profile: dict, max_chars: int = 10000) -> str:
             title   = exp.get("title") or exp.get("position") or ""
             company = exp.get("companyName") or exp.get("company") or ""
             tp      = exp.get("timePeriod") or {}
-            start   = _fmt_date(tp.get("startDate") or exp.get("startDate"))
-            end     = _fmt_date(tp.get("endDate")   or exp.get("endDate")) or "Present"
+            start   = _fmt_date(tp.get("startDate") or exp.get("startDate") or exp.get("start"))
+            end     = _fmt_date(tp.get("endDate")   or exp.get("endDate")   or exp.get("end")) or "Present"
             dur     = exp.get("duration") or exp.get("dateRange") or ""
             size    = exp.get("companyStaffCountRange") or exp.get("employeeCount") or ""
             loc_exp = exp.get("locationName") or exp.get("location") or ""
@@ -552,8 +564,27 @@ def summarize_profile_for_prompt(profile: dict, max_chars: int = 10000) -> str:
         for p in patents[:5]:
             lines.append(f"  {p.get('title') or p.get('name') or ''}")
 
+    # ── Projects ─────────────────────────────────────────────────────────────
+    projects = profile.get("projects") or []
+    if projects:
+        lines.append("\nProjects:")
+        for p in projects[:6]:
+            title = p.get("title") or p.get("name") or ""
+            desc  = (p.get("description") or "")[:200]
+            lines.append(f"  {title}")
+            if desc: lines.append(f"    {desc}")
+
+    # ── Organizations ─────────────────────────────────────────────────────────
+    orgs = profile.get("organizations") or []
+    if orgs:
+        lines.append("\nOrganizations / Leadership:")
+        for o in orgs[:6]:
+            name_o = o.get("name") or ""
+            role_o = o.get("position") or o.get("role") or ""
+            lines.append(f"  {role_o} @ {name_o}".strip(" @"))
+
     # ── Volunteer / Causes ────────────────────────────────────────────────────
-    vol = profile.get("volunteer") or profile.get("volunteerExperiences") or []
+    vol = profile.get("volunteering") or profile.get("volunteer") or profile.get("volunteerExperiences") or []
     if vol:
         lines.append("\nVolunteer:")
         for v in vol[:4]:
