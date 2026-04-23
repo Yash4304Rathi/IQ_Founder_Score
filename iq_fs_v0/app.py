@@ -489,19 +489,24 @@ small[data-testid="InputInstructions"] {{
 st.markdown(CSS, unsafe_allow_html=True)
 
 # ── Constants ─────────────────────────────────────────────────────────────────
-GRADE_COLORS = {
-    "Strong Yes": "iq-pill-green",
-    "Lean Yes":   "iq-pill-green",
-    "Maybe":      "iq-pill-yellow",
-    "Lean No":    "iq-pill-red",
-    "Strong No":  "iq-pill-red",
+TIER_COLORS = {
+    "IQ Fast-Track": "iq-pill-green",
+    "Strong Fit":    "iq-pill-green",
+    "Watchlist":     "iq-pill-yellow",
+    "Pass for Now":  "iq-pill-red",
+    "Not a Fit":     "iq-pill-red",
 }
-GRADE_MARKERS = {
-    "Strong Yes": "++",
-    "Lean Yes":   "+",
-    "Maybe":      "~",
-    "Lean No":    "−",
-    "Strong No":  "−−",
+TIER_MARKERS = {
+    "IQ Fast-Track": "++",
+    "Strong Fit":    "+",
+    "Watchlist":     "~",
+    "Pass for Now":  "−",
+    "Not a Fit":     "−−",
+}
+MODIFIER_COLORS = {
+    "Wildcard":  "iq-pill-green",
+    "Red Flag":  "iq-pill-red",
+    "None":      "iq-pill-gray",
 }
 CONFIDENCE_PILL = {
     "high":    ("iq-pill-green",  "High confidence"),
@@ -571,14 +576,14 @@ with st.sidebar:
         st.caption("No runs yet.")
     else:
         for entry in reversed(history[-20:]):
-            grade  = entry.get("grade", "")
-            result = entry.get("result") or {}
-            failed = not result
-            score  = entry.get("overall_linkedin_fit", "—")
-            name   = entry.get("founder_name", "Unknown")
+            result  = entry.get("result") or {}
+            failed  = not result
+            score   = result.get("total_score") or entry.get("overall_linkedin_fit", "—")
+            tier    = result.get("tier", "")
+            name    = entry.get("founder_name", "Unknown")
             company = entry.get("company_name", "")
-            ts     = entry.get("timestamp", "")[:10]
-            url    = entry.get("linkedin_url", "")
+            ts      = entry.get("timestamp", "")[:10]
+            url     = entry.get("linkedin_url", "")
 
             with st.container(border=True):
                 name_col, score_col = st.columns([3, 1])
@@ -592,8 +597,8 @@ with st.sidebar:
                     else:
                         st.markdown(f"**{score}**/100")
 
-                if not failed and grade:
-                    st.caption(f"Grade: {grade}  ·  {ts}")
+                if not failed and tier:
+                    st.caption(f"{tier}  ·  {ts}")
                 else:
                     st.caption(ts)
 
@@ -827,130 +832,124 @@ if run:
         _render_edit_url_panel(run)
         st.divider()
 
-        score      = result.get("overall_linkedin_fit", 0)
-        grade      = result.get("grade", "—")
-        grade_cls  = GRADE_COLORS.get(grade, "iq-pill-gray")
-        conf_score = result.get("confidence_score", 0)
+        total      = result.get("total_score", 0)
+        tier       = result.get("tier", "—")
+        tier_cls   = TIER_COLORS.get(tier, "iq-pill-gray")
+        modifier   = result.get("modifier", "None")
+        mod_pts    = result.get("modifier_points", 0)
+        mod_cls    = MODIFIER_COLORS.get(modifier, "iq-pill-gray")
+        mod_label  = f"{modifier} ({'+' if mod_pts >= 0 else ''}{mod_pts})" if modifier != "None" else "No modifier"
         summary    = result.get("summary", "")
+        one_liner  = result.get("one_line_signal", "")
 
-        # Top row — score + grade + summary
-        s_col, g_col, sum_col = st.columns([1, 1, 3], gap="large")
+        # ── Top: score + tier + one-liner + summary ────────────────────────────
+        s_col, t_col, sum_col = st.columns([1, 1, 3], gap="large")
 
         with s_col:
-            _section("LinkedIn Fit")
+            _section("IQ Score")
             st.markdown(
-                f"""
-                <div class="iq-score-badge">
-                    <span class="iq-score-num">{score}</span>
-                    <span class="iq-score-denom">out of 100</span>
-                </div>
-                """,
+                f'<div class="iq-score-badge">'
+                f'<span class="iq-score-num">{total}</span>'
+                f'<span class="iq-score-denom">out of 100</span>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
 
-        with g_col:
-            _section("Grade")
+        with t_col:
+            _section("Tier")
             st.markdown(
-                f"""
-                <div style="margin-bottom:0.5rem">{_pill(grade, grade_cls)}</div>
-                <div style="font-size:0.76rem; color:{TEXT_MUTED};">
-                    Confidence&nbsp;&nbsp;
-                    <strong style="color:{TEXT};">{conf_score}/10</strong>
-                </div>
-                """,
+                f'<div style="margin-bottom:0.6rem">{_pill(tier, tier_cls)}</div>'
+                f'<div style="margin-top:0.5rem">{_pill(mod_label, mod_cls)}</div>',
                 unsafe_allow_html=True,
             )
+            if result.get("modifier_reasoning"):
+                st.caption(result["modifier_reasoning"])
 
         with sum_col:
             _section("Summary")
-            st.markdown(
-                f'<p style="margin:0">{summary}</p>',
-                unsafe_allow_html=True,
-            )
-
-        st.caption(
-            "Score is based on LinkedIn data only. "
-            "Treat as a screening signal — not an investment decision."
-        )
+            st.markdown(f'<p style="margin:0 0 0.5rem 0">{summary}</p>', unsafe_allow_html=True)
+            if one_liner:
+                st.markdown(
+                    f'<div style="font-size:0.78rem;font-style:italic;color:{TEXT_MUTED};'
+                    f'border-left:2px solid {ACCENT};padding-left:0.6rem;margin-top:0.4rem">'
+                    f'{one_liner}</div>',
+                    unsafe_allow_html=True,
+                )
 
         st.divider()
 
-        # Scorecard dimensions
-        _section("Scorecard")
-        dims = {
-            "Career Signal":      result.get("career_signal", {}),
-            "Founder Relevance":  result.get("founder_relevance", {}),
-            "Execution Signal":   result.get("execution_signal", {}),
-            "Credibility Signal": result.get("credibility_signal", {}),
-        }
-        for col, (name, data) in zip(st.columns(4, gap="medium"), dims.items()):
+        # ── IQ Analyst Note ────────────────────────────────────────────────────
+        analyst_note = result.get("iq_analyst_note", "")
+        if analyst_note:
+            _section("IQ Analyst Note")
+            st.markdown(
+                f'<div style="background:{SURFACE};border:1px solid {BORDER};border-left:3px solid {ACCENT};'
+                f'border-radius:4px;padding:1rem 1.2rem;font-size:0.88rem;line-height:1.7;color:{TEXT}">'
+                f'{analyst_note}</div>',
+                unsafe_allow_html=True,
+            )
+            st.divider()
+
+        # ── Dimension scorecard ────────────────────────────────────────────────
+        _section("Dimension Breakdown")
+        dims = [
+            ("Founder / Operator",  "founder_operator_experience", 25),
+            ("Education",           "educational_pedigree",        20),
+            ("Elite Employer",      "elite_employer_signal",       20),
+            ("Trajectory",          "trajectory_progression",      10),
+            ("Domain Depth",        "domain_depth",                10),
+            ("Network",             "network_ecosystem",           10),
+            ("Communication",       "communication_quality",        5),
+        ]
+        row1 = st.columns(4, gap="medium")
+        row2 = st.columns(3, gap="medium")
+        all_cols = row1 + row2
+        for col, (label, key, max_pts) in zip(all_cols, dims):
+            data = result.get(key) or {}
             with col:
-                st.metric(name, f"{data.get('score', 0)}/10")
+                st.metric(label, f"{data.get('score', 0)}/{max_pts}")
                 st.caption(data.get("reasoning", ""))
 
         st.divider()
 
-        # Strengths + Concerns
+        # ── Strengths + Concerns ───────────────────────────────────────────────
         str_col, con_col = st.columns(2, gap="large")
-
         with str_col:
             _section("Strengths")
-            items = result.get("strengths") or []
-            if items:
-                html = "".join(
-                    f'<div class="iq-list-item"><span class="iq-list-dot"></span>{s}</div>'
-                    for s in items
+            for s in result.get("strengths") or []:
+                st.markdown(
+                    f'<div class="iq-list-item"><span class="iq-list-dot"></span>{s}</div>',
+                    unsafe_allow_html=True,
                 )
-                st.markdown(html, unsafe_allow_html=True)
-            else:
-                st.caption("None identified.")
-
         with con_col:
             _section("Concerns")
-            items = result.get("concerns") or []
-            if items:
-                html = "".join(
-                    f'<div class="iq-list-item"><span class="iq-list-dot" style="background:#991B1B"></span>{c}</div>'
-                    for c in items
+            for c in result.get("concerns") or []:
+                st.markdown(
+                    f'<div class="iq-list-item"><span class="iq-list-dot" style="background:#991B1B"></span>{c}</div>',
+                    unsafe_allow_html=True,
                 )
-                st.markdown(html, unsafe_allow_html=True)
-            else:
-                st.caption("None identified.")
 
         st.divider()
 
-        # Missing info + Diligence questions
+        # ── Missing info + Diligence questions ────────────────────────────────
         mis_col, dil_col = st.columns(2, gap="large")
-
         with mis_col:
             _section("Missing Information")
-            items = result.get("missing_information") or []
-            if items:
-                html = "".join(
-                    f'<div class="iq-list-item"><span class="iq-list-dot" style="background:{TEXT_MUTED}"></span>{m}</div>'
-                    for m in items
+            for m in result.get("missing_information") or []:
+                st.markdown(
+                    f'<div class="iq-list-item"><span class="iq-list-dot" style="background:{TEXT_MUTED}"></span>{m}</div>',
+                    unsafe_allow_html=True,
                 )
-                st.markdown(html, unsafe_allow_html=True)
-            else:
-                st.caption("Nothing flagged.")
-
         with dil_col:
             _section("Diligence Questions")
-            items = result.get("next_questions_for_diligence") or []
-            if items:
-                html = "".join(
-                    f'<div class="iq-list-item">'
-                    f'<span class="iq-list-num">{i}.</span>{q}'
-                    f'</div>'
-                    for i, q in enumerate(items, 1)
+            for i, q in enumerate(result.get("next_questions_for_diligence") or [], 1):
+                st.markdown(
+                    f'<div class="iq-list-item"><span class="iq-list-num">{i}.</span>{q}</div>',
+                    unsafe_allow_html=True,
                 )
-                st.markdown(html, unsafe_allow_html=True)
-            else:
-                st.caption("No questions generated.")
 
         st.divider()
 
-        # Debug expanders
         with st.expander("Raw LinkedIn data"):
             st.json(run["profile"])
         if run.get("deck_text"):
