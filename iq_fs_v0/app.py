@@ -12,6 +12,7 @@ from linkedin import (
     scrape_linkedin_profile,
     summarize_profile_for_prompt,
 )
+from pdf_report import generate_pdf, report_filename
 from scorer import score_founder
 
 st.set_page_config(
@@ -947,6 +948,23 @@ if run:
                     f'<div class="iq-list-item"><span class="iq-list-num">{i}.</span>{q}</div>',
                     unsafe_allow_html=True,
                 )
+
+        st.divider()
+
+        # ── PDF Export ─────────────────────────────────────────────────────────
+        _section("Export")
+        try:
+            pdf_bytes = generate_pdf(run)
+            fname     = report_filename(run["founder_name"], run["company_name"])
+            st.download_button(
+                label="Download PDF Report",
+                data=pdf_bytes,
+                file_name=fname,
+                mime="application/pdf",
+                type="primary",
+            )
+        except Exception as e:
+            st.warning(f"PDF generation failed: {e}")
 
         st.divider()
 
