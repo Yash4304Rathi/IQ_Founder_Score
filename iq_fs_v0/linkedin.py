@@ -376,6 +376,84 @@ def _scrape_via_apify(url: str) -> dict:
     }
 
 
+def discover_cofounders(
+    primary_founder_name: str,
+    company_name: str,
+    deck_cofounder_names: list[str] | None = None,
+) -> list[dict]:
+    """Discover co-founder LinkedIn profiles.
+
+    Returns a list of dicts: {name, url, match} — ready to pass to _run_pipeline.
+    Strategy 1: for each name extracted from the pitch deck, call find_linkedin_url.
+    Strategy 2: fallback Google search for company co-founders on LinkedIn.
+    """
+    seen_urls: set[str] = set()
+    results: list[dict] = []
+    primary_lower = primary_founder_name.strip().lower()
+
+    for name in (deck_cofounder_names or [])[:3]:
+        if name.strip().lower() == primary_lower:
+            continue
+        match = find_linkedin_url(
+            founder_name=name,
+            company_name=company_name or None,
+        )
+        url = match.get("url", "")
+        if url and url not in seen_urls:
+            seen_urls.add(url)
+            results.append({"name": name, "url": url, "match": match})
+
+    if not results and company_name:
+        query = f'"{company_name}" "co-founder" OR cofounder site:linkedin.com/in'
+        run_input = {
+            "queries": query,
+            "maxPagesPerQuery": 1,
+            "resultsPerPage": 8,
+            "countryCode": "in",
+            "languageCode": "en",
+        }
+        try:
+            run = _client().actor(_GOOGLE_SEARCH_ACTOR).call(run_input=run_input)
+            items = list(_client().dataset(run["defaultDatasetId"]).iterate_items())
+        except Exception:
+            items = []
+
+        organic: list[dict] = []
+        for item in items:
+            organic.extend(item.get("organicResults") or [])
+
+        for result in organic:
+            url = result.get("url") or ""
+            if "linkedin.com/in/" not in url.lower():
+                continue
+            normalized = _normalize_linkedin_url(url)
+            if normalized in seen_urls:
+                continue
+            title = result.get("title") or ""
+            name_from_title = (
+                title.split(" - ")[0].strip() if " - " in title
+                else title.split("|")[0].strip()
+            )
+            if name_from_title.strip().lower() == primary_lower:
+                continue
+            seen_urls.add(normalized)
+            results.append({
+                "name": name_from_title or "Co-founder",
+                "url": normalized,
+                "match": {
+                    "match_confidence": "medium",
+                    "title": title,
+                    "snippet": result.get("description") or "",
+                    "candidates": [],
+                    "query": query,
+                },
+            })
+            if len(results) >= 3:
+                break
+
+    return results
+
+
 def _looks_like_profile(item: dict) -> bool:
     """Heuristic: does this dataset item actually contain LinkedIn profile data?"""
     profile_fields = (

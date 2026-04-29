@@ -7,13 +7,14 @@ import streamlit as st
 from deck import extract_text as extract_deck_text, short_context_hint
 from history import delete_entry, load_history, save_run
 from linkedin import (
+    discover_cofounders,
     find_linkedin_url,
     provider_name,
     scrape_linkedin_profile,
     summarize_profile_for_prompt,
 )
 from pdf_report import generate_pdf, report_filename
-from scorer import score_founder
+from scorer import extract_founders_from_deck, score_founder, score_team
 
 st.set_page_config(
     page_title="IQ Founder Score",
@@ -526,7 +527,7 @@ def _section(label: str) -> None:
 
 
 def _reset_run_state() -> None:
-    for key in ("last_run", "override_url", "profile", "match"):
+    for key in ("last_run", "override_url", "profile", "match", "cofounders_runs", "team_result"):
         st.session_state.pop(key, None)
 
 
@@ -570,6 +571,16 @@ def _run_pipeline(
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
+    st.caption("SETTINGS")
+    st.toggle(
+        "Co-founder Discovery",
+        key="co_founder_mode",
+        help=(
+            "When enabled, automatically searches for and analyzes co-founders "
+            "alongside the primary founder. Uses extra API calls."
+        ),
+    )
+    st.divider()
     st.caption("RUN HISTORY")
     st.divider()
     history = load_history()
@@ -724,6 +735,71 @@ if submitted:
                 "Couldn't auto-find a LinkedIn profile. "
                 "Paste the URL directly in the form and try again."
             )
+        elif st.session_state.get("co_founder_mode"):
+            primary_run = st.session_state["last_run"]
+            if not primary_run["profile"].get("_scrape_error"):
+                _discover_and_analyze_cofounders(
+                    primary_run=primary_run,
+                    deck_text=deck_text,
+                    company_name=company_name.strip(),
+                )
+
+
+def _discover_and_analyze_cofounders(
+    primary_run: dict,
+    deck_text: str,
+    company_name: str,
+) -> None:
+    with st.status("Discovering co-founders…", expanded=True) as cf_status:
+        founder_name = primary_run["founder_name"]
+
+        deck_cofounder_names: list[str] = []
+        if deck_text:
+            st.write("Extracting co-founder names from pitch deck…")
+            deck_cofounder_names = extract_founders_from_deck(
+                deck_text=deck_text,
+                primary_founder_name=founder_name,
+                company_name=company_name,
+            )
+            if deck_cofounder_names:
+                st.write(f"Found in deck: {', '.join(deck_cofounder_names)}")
+
+        st.write("Searching for co-founders on LinkedIn…")
+        cofounder_hits = discover_cofounders(
+            primary_founder_name=founder_name,
+            company_name=company_name,
+            deck_cofounder_names=deck_cofounder_names,
+        )
+
+        if not cofounder_hits:
+            cf_status.update(label="No co-founders found", state="complete")
+            st.session_state["cofounders_runs"] = []
+            st.session_state["team_result"] = {}
+            return
+
+        cofounders_runs: list[dict] = []
+        for hit in cofounder_hits:
+            st.write(f"Analyzing {hit['name']}…")
+            cf_run = _run_pipeline(
+                founder_name=hit["name"],
+                company_name=company_name,
+                linkedin_url=hit["url"],
+                deck_text=deck_text,
+                url_source="auto",
+                match_meta=hit["match"],
+            )
+            cofounders_runs.append(cf_run)
+
+        st.write("Generating team assessment…")
+        all_runs = [primary_run] + cofounders_runs
+        team_result = score_team(all_runs, company_name=company_name)
+
+        st.session_state["cofounders_runs"] = cofounders_runs
+        st.session_state["team_result"] = team_result
+        cf_status.update(
+            label=f"Analyzed {len(cofounders_runs)} co-founder(s) — team assessment ready",
+            state="complete",
+        )
 
 
 def _render_edit_url_panel(run: dict) -> None:
@@ -770,17 +846,12 @@ def _render_edit_url_panel(run: dict) -> None:
             st.rerun()
 
 
-# ── Results ───────────────────────────────────────────────────────────────────
-run = st.session_state.get("last_run")
-if run:
-    result     = run["result"]
-    match_meta = run["match"]
+def _render_founder_result(run: dict, show_edit_panel: bool = True) -> None:
+    result     = run.get("result") or {}
+    match_meta = run.get("match") or {}
     confidence = match_meta.get("match_confidence", "low")
     pill_cls, pill_label = CONFIDENCE_PILL.get(confidence, ("iq-pill-gray", "Unknown"))
 
-    st.divider()
-
-    # Profile used row
     _section("LinkedIn Profile Used")
     st.markdown(
         f"""
@@ -794,13 +865,15 @@ if run:
         unsafe_allow_html=True,
     )
     prov = run["profile"].get("_provider") or provider_name()
-    st.caption(f"Provider: {prov}  ·  Source: {run['url_source']}")
+    st.caption(f"Provider: {prov}  ·  Source: {run.get('url_source', '')}")
     if match_meta.get("title"):
         st.caption(match_meta["title"])
 
     scrape_error = run["profile"].get("_scrape_error")
 
-    # ── Scrape failed ──────────────────────────────────────────────────────────
+    if show_edit_panel:
+        _render_edit_url_panel(run)
+
     if scrape_error:
         st.divider()
         _section("Scrape Error")
@@ -824,26 +897,26 @@ if run:
                     f'target="_blank">Open in Apify ↗</a></div>',
                     unsafe_allow_html=True,
                 )
-        _render_edit_url_panel(run)
+        if not show_edit_panel:
+            _render_edit_url_panel(run)
         with st.expander("Raw actor response"):
             st.json(run["profile"])
 
     else:
-        # ── Success ────────────────────────────────────────────────────────────
-        _render_edit_url_panel(run)
+        if not show_edit_panel:
+            _render_edit_url_panel(run)
         st.divider()
 
-        total      = result.get("total_score", 0)
-        tier       = result.get("tier", "—")
-        tier_cls   = TIER_COLORS.get(tier, "iq-pill-gray")
-        modifier   = result.get("modifier", "None")
-        mod_pts    = result.get("modifier_points", 0)
-        mod_cls    = MODIFIER_COLORS.get(modifier, "iq-pill-gray")
-        mod_label  = f"{modifier} ({'+' if mod_pts >= 0 else ''}{mod_pts})" if modifier != "None" else "No modifier"
-        summary    = result.get("summary", "")
-        one_liner  = result.get("one_line_signal", "")
+        total     = result.get("total_score", 0)
+        tier      = result.get("tier", "—")
+        tier_cls  = TIER_COLORS.get(tier, "iq-pill-gray")
+        modifier  = result.get("modifier", "None")
+        mod_pts   = result.get("modifier_points", 0)
+        mod_cls   = MODIFIER_COLORS.get(modifier, "iq-pill-gray")
+        mod_label = f"{modifier} ({'+' if mod_pts >= 0 else ''}{mod_pts})" if modifier != "None" else "No modifier"
+        summary   = result.get("summary", "")
+        one_liner = result.get("one_line_signal", "")
 
-        # ── Top: score + tier + one-liner + summary ────────────────────────────
         s_col, t_col, sum_col = st.columns([1, 1, 3], gap="large")
 
         with s_col:
@@ -879,7 +952,6 @@ if run:
 
         st.divider()
 
-        # ── IQ Analyst Note ────────────────────────────────────────────────────
         analyst_note = result.get("iq_analyst_note", "")
         if analyst_note:
             _section("IQ Analyst Note")
@@ -891,7 +963,6 @@ if run:
             )
             st.divider()
 
-        # ── Dimension scorecard ────────────────────────────────────────────────
         _section("Dimension Breakdown")
         dims = [
             ("Founder / Operator",  "founder_operator_experience", 25),
@@ -904,8 +975,8 @@ if run:
         ]
         row1 = st.columns(4, gap="medium")
         row2 = st.columns(3, gap="medium")
-        all_cols = row1 + row2
-        for col, (label, key, max_pts) in zip(all_cols, dims):
+        all_dim_cols = row1 + row2
+        for col, (label, key, max_pts) in zip(all_dim_cols, dims):
             data = result.get(key) or {}
             with col:
                 st.metric(label, f"{data.get('score', 0)}/{max_pts}")
@@ -913,7 +984,6 @@ if run:
 
         st.divider()
 
-        # ── Strengths + Concerns ───────────────────────────────────────────────
         str_col, con_col = st.columns(2, gap="large")
         with str_col:
             _section("Strengths")
@@ -932,7 +1002,6 @@ if run:
 
         st.divider()
 
-        # ── Missing info + Diligence questions ────────────────────────────────
         mis_col, dil_col = st.columns(2, gap="large")
         with mis_col:
             _section("Missing Information")
@@ -951,7 +1020,6 @@ if run:
 
         st.divider()
 
-        # ── PDF Export ─────────────────────────────────────────────────────────
         _section("Export")
         try:
             pdf_bytes = generate_pdf(run)
@@ -974,4 +1042,119 @@ if run:
             with st.expander("Extracted pitch deck text"):
                 st.text(run["deck_text"])
         with st.expander("Profile text sent to Claude"):
-            st.text(run["profile_text"])
+            st.text(run.get("profile_text", ""))
+
+
+def _render_team_result(team_result: dict, all_runs: list[dict]) -> None:
+    if not team_result:
+        st.info("Team assessment requires at least 2 successfully scored founders.")
+        return
+
+    team_score = team_result.get("team_score", 0)
+    team_tier  = team_result.get("team_tier", "—")
+    tier_cls   = TIER_COLORS.get(team_tier, "iq-pill-gray")
+
+    s_col, t_col, sum_col = st.columns([1, 1, 3], gap="large")
+    with s_col:
+        _section("Team Score")
+        st.markdown(
+            f'<div class="iq-score-badge">'
+            f'<span class="iq-score-num">{team_score}</span>'
+            f'<span class="iq-score-denom">out of 100</span>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+    with t_col:
+        _section("Team Tier")
+        st.markdown(
+            f'<div style="margin-bottom:0.6rem">{_pill(team_tier, tier_cls)}</div>',
+            unsafe_allow_html=True,
+        )
+    with sum_col:
+        _section("Team Summary")
+        st.markdown(
+            f'<p style="margin:0">{team_result.get("team_summary", "")}</p>',
+            unsafe_allow_html=True,
+        )
+
+    st.divider()
+
+    analyst_note = team_result.get("team_analyst_note", "")
+    if analyst_note:
+        _section("IQ Team Analyst Note")
+        st.markdown(
+            f'<div style="background:{SURFACE};border:1px solid {BORDER};border-left:3px solid {ACCENT};'
+            f'border-radius:4px;padding:1rem 1.2rem;font-size:0.88rem;line-height:1.7;color:{TEXT}">'
+            f'{analyst_note}</div>',
+            unsafe_allow_html=True,
+        )
+        st.divider()
+
+    comp = team_result.get("complementarity", "")
+    if comp:
+        _section("Complementarity")
+        st.markdown(f'<p style="margin:0 0 1rem 0">{comp}</p>', unsafe_allow_html=True)
+
+    str_col, gap_col = st.columns(2, gap="large")
+    with str_col:
+        _section("Combined Strengths")
+        for s in team_result.get("combined_strengths") or []:
+            st.markdown(
+                f'<div class="iq-list-item"><span class="iq-list-dot"></span>{s}</div>',
+                unsafe_allow_html=True,
+            )
+    with gap_col:
+        _section("Team Gaps")
+        for g in team_result.get("combined_gaps") or []:
+            st.markdown(
+                f'<div class="iq-list-item"><span class="iq-list-dot" style="background:#991B1B"></span>{g}</div>',
+                unsafe_allow_html=True,
+            )
+
+    st.divider()
+
+    _section("Team Diligence Questions")
+    for i, q in enumerate(team_result.get("team_diligence_questions") or [], 1):
+        st.markdown(
+            f'<div class="iq-list-item"><span class="iq-list-num">{i}.</span>{q}</div>',
+            unsafe_allow_html=True,
+        )
+
+    st.divider()
+
+    _section("Individual Scores at a Glance")
+    score_cols = st.columns(len(all_runs), gap="medium")
+    for col, r in zip(score_cols, all_runs):
+        res  = r.get("result") or {}
+        tier = res.get("tier", "—")
+        with col:
+            st.metric(
+                r.get("founder_name", "Founder"),
+                f"{res.get('total_score', 0)}/100",
+            )
+            st.markdown(
+                _pill(tier, TIER_COLORS.get(tier, "iq-pill-gray")),
+                unsafe_allow_html=True,
+            )
+
+
+# ── Results ───────────────────────────────────────────────────────────────────
+run = st.session_state.get("last_run")
+if run:
+    cofounders_runs = st.session_state.get("cofounders_runs", [])
+    team_result     = st.session_state.get("team_result", {})
+    all_runs        = [run] + cofounders_runs
+
+    st.divider()
+
+    if len(all_runs) > 1:
+        tab_labels = [r.get("founder_name", f"Founder {i + 1}") for i, r in enumerate(all_runs)]
+        tab_labels.append("Team Assessment")
+        tabs = st.tabs(tab_labels)
+        for tab, r in zip(tabs[:-1], all_runs):
+            with tab:
+                _render_founder_result(r, show_edit_panel=(r is run))
+        with tabs[-1]:
+            _render_team_result(team_result, all_runs)
+    else:
+        _render_founder_result(run, show_edit_panel=True)

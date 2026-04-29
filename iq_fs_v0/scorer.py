@@ -277,6 +277,132 @@ def _parse_json(raw: str) -> dict:
     return _error_result("could not parse model JSON", raw=raw)
 
 
+_FOUNDER_EXTRACT_SYSTEM = """\
+Extract co-founder and founding team member names from a pitch deck. \
+Return ONLY a valid JSON array of full names (strings). \
+Exclude the primary founder already provided. \
+If none are found, return []. No prose, no markdown.\
+"""
+
+
+def extract_founders_from_deck(
+    deck_text: str,
+    primary_founder_name: str,
+    company_name: str = "",
+) -> list[str]:
+    """Use Claude to extract co-founder names from pitch deck text."""
+    if not deck_text or len(deck_text.strip()) < 50:
+        return []
+    prompt = (
+        f"Primary founder (exclude from results): {primary_founder_name}\n"
+        f"Company: {company_name or '(unknown)'}\n\n"
+        f"PITCH DECK TEXT:\n{deck_text[:8000]}\n\n"
+        "Return a JSON array of co-founder/founding team member full names found in this deck."
+    )
+    try:
+        message = _anthropic().messages.create(
+            model=_MODEL,
+            max_tokens=300,
+            system=_FOUNDER_EXTRACT_SYSTEM,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = "".join(
+            block.text for block in message.content if getattr(block, "type", "") == "text"
+        ).strip()
+        cleaned = re.sub(r"^```(?:json)?\s*", "", raw)
+        cleaned = re.sub(r"\s*```$", "", cleaned).strip()
+        names = json.loads(cleaned)
+        if isinstance(names, list):
+            primary_lower = primary_founder_name.strip().lower()
+            return [
+                n.strip() for n in names
+                if isinstance(n, str) and n.strip() and n.strip().lower() != primary_lower
+            ][:4]
+    except Exception:
+        pass
+    return []
+
+
+_TEAM_SYSTEM_PROMPT = """\
+You are a senior analyst at India Quotient (IQ). Given individual founder scores and profiles, \
+produce a concise team-level assessment. Focus on complementarity, functional coverage, and \
+whether this team is stronger or weaker than the sum of its parts.\
+"""
+
+_TEAM_USER_TEMPLATE = """\
+Company: {company_name}
+
+INDIVIDUAL FOUNDER ASSESSMENTS:
+{founders_summary}
+
+Return ONLY a JSON object:
+
+{{
+  "team_summary": "3–4 sentence team overview — who they are together, key dynamic, fit for IQ",
+  "team_score": <0-100 integer weighted average, adjusted ±5 for complementarity>,
+  "team_tier": "IQ Fast-Track" | "Strong Fit" | "Watchlist" | "Pass for Now" | "Not a Fit",
+  "complementarity": "1–2 sentences on how founders complement each other across tech/business/domain",
+  "combined_strengths": ["2–4 strengths unique to this team combination"],
+  "combined_gaps": ["2–3 risks or gaps at the team level"],
+  "team_analyst_note": "2–3 sentences briefing an IQ partner — is this team > sum of its parts? Should IQ move fast?",
+  "team_diligence_questions": ["2–3 questions specific to team dynamics and role clarity"]
+}}
+"""
+
+
+def score_team(
+    founders_runs: list[dict],
+    company_name: str = "",
+) -> dict:
+    """Given list of founder run dicts, produce a team-level assessment."""
+    scored = [
+        r for r in founders_runs
+        if r.get("result")
+        and not r["result"].get("_scrape_error")
+        and r["result"].get("total_score", 0) > 0
+    ]
+    if len(scored) < 2:
+        return {}
+
+    summaries = []
+    for i, r in enumerate(scored, 1):
+        name = r.get("founder_name", f"Founder {i}")
+        res  = r.get("result") or {}
+        summaries.append(
+            f"FOUNDER {i}: {name}\n"
+            f"Score: {res.get('total_score', 0)}/100  |  Tier: {res.get('tier', '—')}\n"
+            f"Summary: {res.get('summary', '')}\n"
+            f"Signal: {res.get('one_line_signal', '')}\n"
+            f"Strengths: {'; '.join((res.get('strengths') or [])[:3])}\n"
+            f"Concerns: {'; '.join((res.get('concerns') or [])[:2])}"
+        )
+
+    prompt = _TEAM_USER_TEMPLATE.format(
+        company_name=company_name or "(not provided)",
+        founders_summary="\n\n".join(summaries),
+    )
+
+    try:
+        message = _anthropic().messages.create(
+            model=_MODEL,
+            max_tokens=1200,
+            system=_TEAM_SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = "".join(
+            block.text for block in message.content if getattr(block, "type", "") == "text"
+        ).strip()
+        return _parse_json(raw)
+    except Exception as e:
+        return {
+            "team_summary": f"Team scoring error: {e}",
+            "team_score": 0,
+            "team_tier": "—",
+            "combined_strengths": [],
+            "combined_gaps": [],
+        }
+
+
 def _error_result(message: str, raw: str = "") -> dict:
     empty_dim = {"score": 0, "reasoning": ""}
     return {
